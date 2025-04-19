@@ -1,39 +1,43 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useParams, useRouter } from "next/navigation"
-import Image from "next/image"
-import { ArrowLeft, ExternalLink } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
-import { MarkdownRenderer } from "@/components/markdown-renderer"
-import { getProjectById, type Project } from "@/lib/data"
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import Image from "next/image";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { MarkdownRenderer } from "@/components/markdown-renderer";
+import { getProjectById, type Project } from "@/lib/data";
 
 export default function ProjectDetail() {
-  const params = useParams()
-  const router = useRouter()
-  const projectId = params?.id as string
+  const params = useParams();
+  const router = useRouter();
+  const projectId = params?.id as string;
 
-  const [project, setProject] = useState<Project | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadProject = async () => {
-      setLoading(true)
-      const projectData = await getProjectById(projectId)
-      setProject(projectData)
-      setLoading(false)
-    }
+      setLoading(true);
+      const projectData = await getProjectById(projectId);
+      setProject(projectData);
+      setLoading(false);
+    };
 
-    loadProject()
-  }, [projectId])
+    loadProject();
+  }, [projectId]);
 
   if (loading) {
     return (
       <div className="container mx-auto py-8 px-4">
-        <Button variant="ghost" onClick={() => router.push("/")} className="mb-6">
+        <Button
+          variant="ghost"
+          onClick={() => router.push("/")}
+          className="mb-6"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           프로젝트 목록으로 돌아가기
         </Button>
@@ -66,7 +70,7 @@ export default function ProjectDetail() {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (!project) {
@@ -78,7 +82,7 @@ export default function ProjectDetail() {
           프로젝트 목록으로 돌아가기
         </Button>
       </div>
-    )
+    );
   }
 
   return (
@@ -96,8 +100,13 @@ export default function ProjectDetail() {
               <Badge>{project.type}</Badge>
               <Badge variant="outline">{project.generation}기</Badge>
               {project.rank !== null && (
-                <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
-                  {project.rank > 0 ? `우수 프로젝트 #${project.rank}` : "우수 프로젝트"}
+                <Badge
+                  variant="secondary"
+                  className="bg-yellow-100 text-yellow-800"
+                >
+                  {project.rank > 0
+                    ? `우수 프로젝트 #${project.rank}`
+                    : "우수 프로젝트"}
                 </Badge>
               )}
             </div>
@@ -110,28 +119,39 @@ export default function ProjectDetail() {
 
         <div className="space-y-6">
           <div className="relative aspect-video overflow-hidden rounded-lg">
-            <Image src={project.imageUrl || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+            <Image
+              src={project.imageUrl || "/placeholder.svg"}
+              alt={project.title}
+              fill
+              className="object-cover"
+            />
           </div>
 
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">프로젝트 상세 정보</h2>
             <div className="space-y-2">
               <div>
-                <span className="text-sm text-muted-foreground">소프트웨어 마에스트로 기수:</span>
+                <span className="text-sm text-muted-foreground">기수:</span>
                 <p>{project.generation}기</p>
               </div>
               <div>
-                <span className="text-sm text-muted-foreground">프로젝트 유형:</span>
+                <span className="text-sm text-muted-foreground">
+                  프로젝트 유형:
+                </span>
                 <p>{project.type}</p>
               </div>
               {project.rank !== null && (
                 <div>
-                  <span className="text-sm text-muted-foreground">우수 프로젝트 순위:</span>
-                  <p>{project.rank > 0 ? `#${project.rank}` : "우수 (순위 없음)"}</p>
+                  <span className="text-sm text-muted-foreground">
+                    우수 프로젝트 순위:
+                  </span>
+                  <p>{project.rank > 0 ? `#${project.rank}` : "우수"}</p>
                 </div>
               )}
               <div>
-                <span className="text-sm text-muted-foreground">프로젝트 링크:</span>
+                <span className="text-sm text-muted-foreground">
+                  프로젝트 링크:
+                </span>
                 <p>
                   <a
                     href={project.link}
@@ -148,5 +168,5 @@ export default function ProjectDetail() {
         </div>
       </div>
     </main>
-  )
+  );
 }

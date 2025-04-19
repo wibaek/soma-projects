@@ -19,10 +19,18 @@ export default function RootLayout({
     <html lang="ko">
       <body className={inter.className}>
         <header className="border-b">
-          <div className="container mx-auto py-4 px-4">
+          <div className="container mx-auto py-4 px-4 flex justify-between items-center">
             <h1 className="text-xl font-bold">
               소프트웨어 마에스트로 프로젝트
             </h1>
+            <a
+              href="https://open.kakao.com/o/sFa5F6rh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-[#FEE500] text-black rounded-md hover:bg-[#FEE500]/90 transition-colors"
+            >
+              문의하기
+            </a>
           </div>
         </header>
         {children}

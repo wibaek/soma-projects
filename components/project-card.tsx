@@ -1,11 +1,11 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import type { Project } from "@/lib/data"
+import Link from "next/link";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import type { Project } from "@/lib/data";
 
 interface ProjectCardProps {
-  project: Project
+  project: Project;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
@@ -13,11 +13,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Link href={`/projects/${project.id}`}>
       <Card className="overflow-hidden h-full transition-all hover:shadow-lg">
         <div className="relative h-48 w-full">
-          <Image src={project.imageUrl || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-          {project.rank !== null && (
+          <Image
+            src={project.imageUrl || "/placeholder.svg"}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+          {project.rank && (
             <div className="absolute top-2 right-2">
-              <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">
-                {project.rank > 0 ? `우수 프로젝트 #${project.rank}` : "우수 프로젝트"}
+              <Badge
+                variant="secondary"
+                className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
+              >
+                우수 프로젝트
               </Badge>
             </div>
           )}
@@ -38,5 +46,5 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </CardFooter>
       </Card>
     </Link>
-  )
+  );
 }

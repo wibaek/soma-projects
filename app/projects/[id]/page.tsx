@@ -99,14 +99,12 @@ export default function ProjectDetail() {
             <div className="flex flex-wrap gap-2 mb-4">
               <Badge>{project.type}</Badge>
               <Badge variant="outline">{project.generation}기</Badge>
-              {project.rank !== null && (
+              {project.rank && (
                 <Badge
                   variant="secondary"
                   className="bg-yellow-100 text-yellow-800"
                 >
-                  {project.rank > 0
-                    ? `우수 프로젝트 #${project.rank}`
-                    : "우수 프로젝트"}
+                  우수 프로젝트
                 </Badge>
               )}
             </div>
@@ -140,12 +138,12 @@ export default function ProjectDetail() {
                 </span>
                 <p>{project.type}</p>
               </div>
-              {project.rank !== null && (
+              {project.rank && (
                 <div>
                   <span className="text-sm text-muted-foreground">
-                    우수 프로젝트 순위:
+                    우수 프로젝트 여부:
                   </span>
-                  <p>{project.rank > 0 ? `#${project.rank}` : "우수"}</p>
+                  <p>우수</p>
                 </div>
               )}
               <div>
@@ -153,14 +151,19 @@ export default function ProjectDetail() {
                   프로젝트 링크:
                 </span>
                 <p>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline flex items-center"
-                  >
-                    프로젝트 방문하기 <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline flex items-center"
+                    >
+                      프로젝트 방문하기
+                      <ExternalLink className="ml-1 h-4 w-4" />
+                    </a>
+                  ) : (
+                    <span>미제공</span>
+                  )}
                 </p>
               </div>
             </div>

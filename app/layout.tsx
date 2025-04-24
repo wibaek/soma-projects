@@ -2,6 +2,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Github, Mail } from "lucide-react";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,8 +38,36 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="border-t mt-12">
-          <div className="container mx-auto py-6 px-4 text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} 소프트웨어 마에스트로 프로젝트 쇼케이스
+          <div className="container mx-auto py-6 px-4">
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/wibaek/soma-projects"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+                <a
+                  href="mailto:devmuromi@gmail.com"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+              </div>
+              <div className="text-sm text-muted-foreground text-center">
+                <p>소프트웨어 마에스트로 프로젝트</p>
+                <div className="mt-2 flex gap-4 justify-center">
+                  <Link
+                    href="https://www.swmaestro.org/sw/singl/projectIntc/list.do?menuNo=200013"
+                    className="hover:underline"
+                  >
+                    주요 프로젝트 소개
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </footer>
       </body>

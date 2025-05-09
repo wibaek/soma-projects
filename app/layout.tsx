@@ -23,9 +23,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <header className="border-b">
           <div className="container mx-auto py-4 px-4 flex justify-between items-center">
-            <h1 className="text-xl font-bold">
+            <Link
+              href="/"
+              className="text-xl font-bold hover:opacity-80 transition-opacity"
+            >
               소프트웨어 마에스트로 프로젝트
-            </h1>
+            </Link>
             <a
               href="https://open.kakao.com/o/sFa5F6rh"
               target="_blank"

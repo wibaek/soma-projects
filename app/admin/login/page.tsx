@@ -29,7 +29,7 @@ export default function LoginPage() {
       body: JSON.stringify({ idToken: tokenResult.token }),
       headers: { "Content-Type": "application/json" },
     });
-    if (res.ok) router.replace("/admin");
+    if (res.ok) router.replace("/admin/new");
   };
 
   return (

@@ -5,6 +5,7 @@ import {
   getDoc,
   query,
   where,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "./firebase";
 
@@ -94,12 +95,11 @@ export async function getFilteredProjects(
       constraints.push(where("rank", "==", true));
     }
 
+    // 기수 순으로 내림차순 정렬 추가
+    constraints.push(orderBy("generation", "desc"));
+
     // 쿼리 실행
-    const querySnapshot = await getDocs(
-      constraints.length > 0
-        ? query(projectsQuery, ...constraints)
-        : projectsQuery
-    );
+    const querySnapshot = await getDocs(query(projectsQuery, ...constraints));
 
     return querySnapshot.docs.map((doc) => {
       const data = doc.data();

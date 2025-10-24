@@ -9,7 +9,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "소프트웨어 마에스트로 프로젝트",
+  title: "SW마에스트로 프로젝트",
   description: "소프트웨어 마에스트로 프로그램의 프로젝트를 쉽게 탐색하세요",
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
               href="/"
               className="text-xl font-bold hover:opacity-80 transition-opacity"
             >
-              소프트웨어 마에스트로 프로젝트
+              SW마에스트로 프로젝트
             </Link>
             <a
               href="https://open.kakao.com/o/sFa5F6rh"

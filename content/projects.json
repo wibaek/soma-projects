@@ -1,0 +1,622 @@
+[
+  {
+    "id": "16-aisc",
+    "title": "AISC - AI 활용능력평가",
+    "link": "https://www.aisc.ac",
+    "description": "AISC - AI 활용능력평가",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-10-15T21:20:38.133Z"
+  },
+  {
+    "id": "16-alike",
+    "link": "https://www.alike.ai.kr",
+    "description": "더 빠르고 더 쉬우며 모두에게 동등한 키오스크 경험",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:52:30.422Z",
+    "imageUrl": "https://image.wibaek.com/soma/16-alike.png",
+    "title": "ALIKE - 더 빠르고 더 쉬우며 모두에게 동등한 키오스크 경험"
+  },
+  {
+    "id": "16-autcloud",
+    "generation": 16,
+    "link": "https://aut-cloud.com/auth/signin",
+    "imageUrl": "",
+    "type": "Web",
+    "createdAt": "2025-09-25T07:21:17.175Z",
+    "title": "AutCloud - AI Agent 기반 인프라 설계, managing 서비스",
+    "description": "AutCloud - AI Agent 기반 인프라 설계, managing 서비스"
+  },
+  {
+    "id": "16-chalpu",
+    "link": "https://www.chalpu.com",
+    "description": "플랫폼 사진 반려, 이제 그만!\n한 번에 승인받는\n사진 촬영 가이드",
+    "type": "App",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:45:33.760Z",
+    "imageUrl": "https://www.chalpu.com/_next/image?url=%2Flanding.gif&w=16&q=75",
+    "title": "찰푸 - 배달 음식점 사장님을 위한 메뉴 도우미"
+  },
+  {
+    "id": "16-cheftory",
+    "description": "끊기지 않는 요리 경험\n유튜브 영상을 분석해 단계별 레시피로 변환하고,\n음성 명령으로 레시피 제어까지 간편하게!",
+    "generation": 16,
+    "link": "https://cheftories.com",
+    "createdAt": "2025-09-23T11:06:32.325Z",
+    "title": "쉐프토리 - 핸즈프리로 요리를 안내하는 AI 도우미",
+    "imageUrl": "",
+    "type": "Web"
+  },
+  {
+    "id": "16-climbx",
+    "title": "ClimbX - 성장하는 클라이머를 위한 기록, 경쟁 플랫폼",
+    "createdAt": "2025-09-25T07:20:44.547Z",
+    "imageUrl": "",
+    "link": "https://apps.apple.com/kr/app/climbx/id6749671273",
+    "description": "ClimbX - 성장하는 클라이머를 위한 기록, 경쟁 플랫폼",
+    "generation": 16,
+    "type": "App"
+  },
+  {
+    "id": "16-daltanyang",
+    "title": "달타냥 - 확률형 배틀로얄 게임",
+    "link": "https://apps.apple.com/kr/app/%EB%8B%AC%ED%83%80%EB%83%A5/id6749350543",
+    "description": "달타냥 - 확률형 배틀로얄 게임",
+    "imageUrl": "",
+    "type": "App",
+    "generation": 16,
+    "createdAt": "2025-11-10T17:37:24.800Z"
+  },
+  {
+    "id": "16-dasistand",
+    "description": "다양한 시각의 뉴스 스탠드",
+    "type": "App",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:51:10.458Z",
+    "title": "다시스탠드 - 다양한 시각의 뉴스 스탠드",
+    "link": "https://apps.apple.com/kr/app/%EB%8B%A4%EC%8B%9C-%EC%8A%A4%ED%83%A0%EB%93%9C-%EB%8B%A4%EC%96%91%ED%95%9C-%EC%8B%9C%EA%B0%81%EC%9D%98-%EB%89%B4%EC%8A%A4-%EC%8A%A4%ED%83%A0%EB%93%9C/id6748309466?uo=2",
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/02/c1/48/02c14804-ea51-b8d1-6752-5f51c8afe524/Design.png/626x0w.webp"
+  },
+  {
+    "id": "16-duckonthespot",
+    "link": "https://duckonthespot.com",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:48:19.141Z",
+    "imageUrl": "https://duckonthespot.com/images/dots_logo.png",
+    "description": "오프라인 행사장에서 포토카드 교환을 돕는 애플리케이션",
+    "title": "덕온더스팟 - 오프라인 행사장에서 포토카드 교환을 돕는 애플리케이션"
+  },
+  {
+    "id": "16-edukit",
+    "description": "교사를 위한 AI 업무 도우미\n생활기록부 작성부터 학생 관리까지, AI가 도와주는 스마트한 교육 도구",
+    "link": "https://edukit.co.kr/",
+    "generation": 16,
+    "imageUrl": "",
+    "type": "Web",
+    "title": "Edukit - 교사를 위한 AI 업무 도우미",
+    "createdAt": "2025-09-23T15:52:53.515Z"
+  },
+  {
+    "id": "16-ghostrunner",
+    "title": "고스트러너 - 언제 어디서나 함께 달리는 고스트러너",
+    "description": "지금, 어제의 나와 경쟁한다\n과거의 기록을 고스트로 소환해 실시간으로 겨룰 수 있는 몰입형 러닝 앱.\n코스 추천부터 음성/메트로놈 피드백까지, 지루할 틈이 없어요.",
+    "createdAt": "2025-09-23T11:07:39.441Z",
+    "imageUrl": "",
+    "link": "https://ghostrun.io",
+    "generation": 16,
+    "type": "Web"
+  },
+  {
+    "id": "16-gyohwan-com",
+    "title": "교환닷컴 - 교환학생 버티컬 서비스",
+    "link": "https://www.gyohwan.com",
+    "description": "교환닷컴 - 교환학생 버티컬 서비스",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-10-28T12:55:09.530Z"
+  },
+  {
+    "id": "16-kanata",
+    "description": "덕질하면서 일본어 배우기\n카나타와 함께 귀여운 캐릭터와 대화하며 일본어 회화를 연습해봐요!",
+    "type": "App",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:50:13.948Z",
+    "imageUrl": "https://kanata.ryuzu.me/kanata.png",
+    "link": "https://kanata.live/",
+    "title": "카나타 - 캐릭터와 함께 배우는 일본어 회화"
+  },
+  {
+    "id": "16-kokomen",
+    "title": "꼬꼬면 - 꼬리에 꼬리를 무는 면접",
+    "link": "https://kokomen.kr",
+    "description": "면접 준비의 새로운 기준\n체계적인 학습과 실전 연습으로 기술 면접을 완벽하게 준비하세요. 운영체제부터 알고리즘까지, 모든 것을 한 곳에서.",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-14T15:57:07.707Z"
+  },
+  {
+    "id": "16-linglevel",
+    "description": "Ling-Level - 사용자의 흥미있는 콘텐츠를 수준에 맞춰주는 독해, 청해 영어 학습 서비스 앱",
+    "title": "Ling-Level - 사용자의 흥미있는 콘텐츠를 수준에 맞춰주는 독해, 청해 영어 학습 서비스 앱",
+    "createdAt": "2025-09-25T07:22:18.057Z",
+    "imageUrl": "",
+    "generation": 16,
+    "link": "https://apps.apple.com/kr/app/ling-level/id6748909692",
+    "type": "App"
+  },
+  {
+    "id": "16-oddiya",
+    "description": "아이의 시선으로 추억을 완성하는 여행 서비스",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:57:59.435Z",
+    "imageUrl": "",
+    "link": "",
+    "title": "오디야 Oddiya - 아이의 시선으로 추억을 완성하는 여행 서비스"
+  },
+  {
+    "id": "16-perfect-swing",
+    "title": "Perfect Swing:AI Tennis Editor",
+    "link": "https://apps.apple.com/us/app/perfect-swing-ai-tennis-editor/id6751231905",
+    "description": "Perfect Swing:AI Tennis Editor",
+    "imageUrl": "",
+    "type": "App",
+    "generation": 16,
+    "createdAt": "2025-10-24T08:35:00.010Z"
+  },
+  {
+    "id": "16-phenokio",
+    "link": "https://phenokio.vercel.app",
+    "description": "디지털 피노타이핑(Digital Phenotyping)을 통한 안부 확인",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-14T16:02:50.175Z",
+    "title": "피노키오(Phenokio) - 멀리 있어도 이어지는 우리 가족의 하루"
+  },
+  {
+    "id": "16-pomocore",
+    "link": "https://pomocore.com",
+    "description": "PC 작업자의 집중 습관을 분석하고, 경쟁 기반 게이미피케이션을 통해 몰입 시간을 끌어올리는 생산성 도구",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-14T16:27:20.874Z",
+    "title": "Pomocore - 유저의 집중력을 분석하고, 경쟁하는 생산성 도구"
+  },
+  {
+    "id": "16-recipeit",
+    "title": "Recipe it! - 핸즈프리 요리 도우미 앱",
+    "description": "Recipe it! - 핸즈프리 요리 도우미 앱",
+    "link": "https://apps.apple.com/kr/app/%EB%A0%88%EC%8B%9C%ED%95%8F-%ED%95%B8%EC%A6%88%ED%94%84%EB%A6%AC-%EC%9A%94%EB%A6%AC-%EB%8F%84%EC%9A%B0%EB%AF%B8-%EC%95%B1-recipe-it/id6749512639",
+    "type": "App",
+    "imageUrl": "",
+    "createdAt": "2025-09-27T08:33:42.696Z",
+    "generation": 16
+  },
+  {
+    "id": "16-sijeom",
+    "title": "시점 - 한눈에 보는 이슈 흐름, 당신의 이슈 추적 서비스",
+    "link": "https://sijeom.kr",
+    "description": "한눈에 보는 이슈 흐름, 당신의 이슈 추적 서비스",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-14T16:21:36.944Z"
+  },
+  {
+    "id": "16-thefirsttake",
+    "link": "https://the-first-take.com",
+    "description": "완벽한 옷 한 벌을 찾아주는 AI 서비스",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:53:14.241Z",
+    "imageUrl": "https://image.wibaek.com/soma/16-thefirsttake.png",
+    "title": "The First Take - LLM 기반 개인 맞춤형 스타일 큐레이션 플랫폼"
+  },
+  {
+    "id": "16-tyquill",
+    "link": "https://www.tyquill.ai",
+    "description": "AI 뉴스레터 어시스턴트\n무료 뉴스레터 작성 도구\n\nGemini 2.5 기반 AI 뉴스레터 어시스턴트로 웹 스크랩부터 AI 초안 생성, 편집까지 한 번에. 모든 기능이 완전 무료로 제공되는 최고의 뉴스레터 작성 도구입니다.",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:47:20.918Z",
+    "imageUrl": "https://image.wibaek.com/soma/16-tyquill.png",
+    "title": "Tyquill - RAG 기반 뉴스레터 자동 생성 및 관리 SaaS"
+  },
+  {
+    "id": "16-wellmeet",
+    "title": "WellMeet - 상황에 맞는 식당 추천 및 예약 서비스",
+    "link": "https://well-meet-frontend-user.vercel.app",
+    "description": "상황에 맞는 식당 추천 및 예약 서비스",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16,
+    "createdAt": "2025-08-14T16:00:01.245Z"
+  },
+  {
+    "id": "16-whipbook",
+    "link": "https://play.google.com/store/apps/details?id=com.whipbook.app",
+    "description": "목록에 있는 모든 책을 읽을 시간이 부족하신가요?\nWhipbook은 현대인의 삶에 맞춰 빠르고 집중력 있게, 그리고 만족스러운 독서를 위해 만들어진 앱입니다.\n\nWhipbook은 짧은 학습을 위한 한입 크기의 책 요약을 제공합니다. 출퇴근 중, 점심 시간, 잠자리에 들기 전, 언제 어디서든 Whipbook은 베스트셀러의 핵심 메시지를 단 1분 만에 이해할 수 있도록 도와줍니다.\n\n전문가가 작성한 요약은 핵심적인 통찰력을 빠르게 전달하도록 설계되어 속독과 부담 없이 정보를 얻는 데 적합합니다.\n\n나만의 독서 목록을 만들고 읽은 책을 추적하세요. 시대를 초월하는 고전부터 인기 도서까지, 그 어느 때보다 빠르게 관심을 가질 만한 책을 찾아보세요.\n\n아직 다음에 무엇을 읽을지 고민 중이신가요? Whipbook의 짧고 솔직한 서평을 통해 수천 권의 책을 살펴보고, 목표, 관심사, 또는 호기심에 맞는 책을 찾을 수 있습니다.\n\n왜 Whipbook인가요?\n• 60초 안에 책의 핵심을 파악하세요\n• 매일 마이크로 러닝을 통해 지식을 업그레이드하세요\n• 시간을 절약하고 더 똑똑하게 읽으세요\n• 기억에 남는 요약본으로 나만의 독서 목록을 구성하세요\n• 믿을 수 있는 서평으로 다음 읽을 책을 찾아보세요\n마이크로 러닝과 속독을 위한 최고의 독서 앱입니다.\n\n읽고 싶은 책을 모두 읽을 시간이 부족하신가요?\nWhipbook은 현대인의 삶에 맞춰 설계된 빠르고 집중력 있는 독서 앱입니다.\n\n마이크로 러닝에 최적화된 짧은 요약본을 제공합니다. 출퇴근 중, 점심 시간, 잠자리에 들기 전 편안한 시간에도 Whipbook은 베스트셀러의 핵심 메시지를 단 1분 만에 이해할 수 있도록 도와줍니다.\n\n전문가가 작성한 요약본은 핵심적인 통찰력을 빠르게 전달하도록 설계되어 속독과 부담 없이 정보를 얻는 데 적합합니다.\n\n나만의 독서 목록을 만들고 읽은 책을 추적하세요. 시대를 초월하는 고전부터 인기 도서까지, 그 어느 때보다 빠르게 주목할 만한 책을 찾아보세요.\n\n아직 다음에 무엇을 읽을지 고민 중이신가요? 짧고 솔직한 서평을 통해 수천 권의 책을 살펴보고, 목표, 관심사, 또는 호기심에 맞는 책을 찾을 수 있도록 도와드립니다.\n\n왜 Whipbook인가요?\n• 60초 안에 책의 핵심을 파악하세요.\n• 매일 간단한 학습을 통해 지식을 향상시키세요.\n• 시간을 절약하고 더 똑똑하게 읽으세요.\n• 기억에 남는 요약으로 나만의 독서 목록을 구성하세요.\n• 믿을 수 있는 서평으로 다음 읽을 책을 찾아보세요.",
+    "type": "App",
+    "generation": 16,
+    "createdAt": "2025-08-10T11:57:25.177Z",
+    "imageUrl": "https://play-lh.googleusercontent.com/uw28K1bXzxIUcizCgHVpQB5z6anzn62NLCEWtk7SRIKSFJNo-8vTxja0nSAe3aShJWTiGPMlCzqZjElEyWWtfg=w1052-h592-rw",
+    "title": "Whipbook - 도서 추천 숏폼 서비스"
+  },
+  {
+    "id": "15-edufi",
+    "description": "AI 교정 기능을 탑재한 코딩 교육 플랫폼\n\n- 이규열\n- 김유진\n- 송관석",
+    "generation": 15,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "에듀파이",
+    "type": ""
+  },
+  {
+    "id": "15-flash",
+    "description": "클라이밍장의 해설을 제공하는 서비스\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223606625968)",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh_vB3n5hJTQ7ceRui6bCYdWuGZCPT9wF32w&s",
+    "link": "https://linktr.ee/climb_flash?fbclid=PAZXh0bgNhZW0CMTEAAafN7mYlPj_mWZytgyovY2shdGvbgtpLRbmdE8PwIICp7-sX0XVxiLYuyVgDdA_aem_NavV91MegnsToB6aWgJk7Q",
+    "rank": false,
+    "title": "Flash",
+    "type": "App",
+    "generation": 15
+  },
+  {
+    "id": "15-fortunecookie",
+    "description": "적어서 올린 일상을 바탕으로 미리 설정한 캐릭터가 나오는 네 컷 만화를 생성해주는 서비스\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223598546597)",
+    "imageUrl": "https://image.wibaek.com/15-fortunecookie.png",
+    "link": "",
+    "rank": false,
+    "title": "포춘쿠키",
+    "type": "App",
+    "generation": 15
+  },
+  {
+    "id": "15-oatnote",
+    "description": "LLM 기반 메모 자동 요약 정리 및 정보관리 서비스\n\n- 배진호\n- 윤민지\n- 조태식",
+    "generation": 15,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "Oatnote",
+    "type": ""
+  },
+  {
+    "id": "15-oneIt",
+    "description": "선물 추천 서비스\n\n- 정세연\n- 최성연\n- 신혜준",
+    "generation": 15,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "Onelt",
+    "type": ""
+  },
+  {
+    "id": "15-onestep",
+    "description": "AI를 사용해서 할일들을 잘게 쪼개주는 서비스",
+    "imageUrl": "https://image.wibaek.com/15-onestep.png",
+    "link": "",
+    "rank": false,
+    "title": "원스텝",
+    "type": "App",
+    "generation": 15
+  },
+  {
+    "id": "15-bebesnap",
+    "description": "아기 식단 및 대변 이미지 분석 건강 정보 어플리케이션\n\n베베스냅은 멀티모달 데이터(식단 임상 정보, 대변 이미지)를 생성형 AI 기반으로 통합 분석하여 영유아 맞춤형 건강 정보를 제공하는 어플리케이션이다. 지속적 데이터 분석을 통해 효과적인 아기의 건강 관리를 지원한다.",
+    "generation": 15,
+    "imageUrl": "https://www.bebesnap.com/_next/static/media/mockup2.d432e085.png",
+    "link": "https://www.bebesnap.com/ko",
+    "title": "베베스냅",
+    "type": "App",
+    "rank": true
+  },
+  {
+    "id": "15-necklife",
+    "generation": 15,
+    "imageUrl": "https://www.necklife.site/home.png",
+    "link": "https://www.necklife.site/",
+    "title": "NeckLife",
+    "type": "App",
+    "rank": true,
+    "description": "에어팟과 함께하는 자세교정\n\n운동부족과 잘못된 자세습관으로 거북목을 겪는 이들을 위한 에어팟활용 거북목 예방 및 교정 애플리케이션. 사용자의 자세를 모니터링하고, 교정 피드백을 제공하며, 거북목 통증 완화를 위한 다양한 미션들을 제공합니다.\n\n- [소마 블로그 소개](https://blog.naver.com/sw_maestro/223647957002)"
+  },
+  {
+    "id": "15-notify",
+    "generation": 15,
+    "title": "노티파이",
+    "rank": true,
+    "link": "https://notifai.kr",
+    "description": "간편한 노트 정리, 더 정확한 대학 강의 음성인식  \n\n노티파이는 대학생이 수업을 녹음하고 정리할 수 있는 STT 서비스로, 강의자료 페이지에 녹음 스크립트를 매칭해 정리하고, 정확한 전공단어 인식을 제공한다. 번역과 요약 기능을 통해 활용성을 높였다.\n\n현재는 서비스 중단 상태이다.\n\n- [소마 블로그 소개](https://blog.naver.com/sw_maestro/223614733499)\n\n- [임정우](https://www.linkedin.com/in/%EC%A0%95%EC%9A%B0-%EC%9E%84-a48952304/)",
+    "type": "Web",
+    "imageUrl": "https://image.wibaek.com/15-notify.png"
+  },
+  {
+    "id": "15-remind",
+    "generation": 15,
+    "link": "https://apps.apple.com/kr/app/%EB%A6%AC%EB%A7%88%EC%9D%B8%EB%93%9C-ai-%EA%B0%95%EC%95%84%EC%A7%80%EC%99%80-%ED%95%A8%EA%BB%98%ED%95%98%EB%8A%94-%ED%9E%90%EB%A7%81%EC%B1%84%ED%8C%85-%EA%B0%90%EC%A0%95%EC%9D%BC%EA%B8%B0/id6544783154?l=en-GB",
+    "title": "리마인드",
+    "type": "App",
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b8/6c/5f/b86c5f05-9a1e-bffb-2887-54700cadd9e3/AppIcon-0-0-1x_U007ephone-0-0-85-220.png/1200x630wa.png",
+    "description": "LLM 기반 심리케어 서비스, 리마인드(reMIND)\n내담자와 상담자가 효율적으로 상담하기 위한 챗봇 서비스 및 그를 활용한 핵심 키워드, 감정 데이터 등 상담용 심리 분석을 제공하는 솔루션\n\n- [최은서](https://www.linkedin.com/in/eunseo-choi-53716b2b6)",
+    "rank": true
+  },
+  {
+    "id": "15-ssdam",
+    "generation": 15,
+    "link": "https://ssdam.ink",
+    "title": "쓰담",
+    "type": "Web",
+    "imageUrl": "https://ssdam.ink/img/editor.2b373c4c.png",
+    "rank": true,
+    "description": "AI 집필 비서와 함께하는 책 집필 서비스\n\n“쓰담, 이야기를 쓰고, 생각을 담다” AI집필 비서와 함께 책 출판까지의 과정을 도와주는 웹 서비스\n\n- [소마 블로그 소개](https://blog.naver.com/sw_maestro/223594664353)"
+  },
+  {
+    "id": "14-coclimb",
+    "generation": 14,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "Coclimb",
+    "type": "App",
+    "description": "암장 정보 제공 서비스, 클라이밍 정보 제공 서비스.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223271492740)"
+  },
+  {
+    "id": "14-dopaminedefense",
+    "description": "현대인이 매일 긴 글을 읽고 요약하며 본인만의 문해력과 사고력을 지킬 수 있는 서비스\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223289338645)",
+    "generation": 14,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "도파민디펜스",
+    "type": ""
+  },
+  {
+    "id": "14-morandi",
+    "description": "업별 코딩 테스트 모의 환경 서비스를 제공하는 프로젝트.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223270922372)",
+    "generation": 14,
+    "imageUrl": "https://image.wibaek.com/soma/14-morandi.jpg",
+    "link": "https://morandi.co.kr/",
+    "rank": false,
+    "title": "모두의 랜덤 디팬스(모랜디)",
+    "type": "Web"
+  },
+  {
+    "id": "14-mybrary",
+    "generation": 14,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "마이브러리",
+    "type": "App",
+    "description": "서비스는 소장 중인 도서들을 디지털화 하여 모바일 개인 서재를 제공하는 서비스.\n\n현재는 서비스 종료 상태이다.\n\n- [소마 블로그](https://m.blog.naver.com/sw_maestro/223272559740)"
+  },
+  {
+    "id": "14-ndaesang",
+    "description": "N명의 대학생들이 모여 즐겁게 서로를 만나고 또 연결되게끔 하는 프로젝트.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223270908653)",
+    "generation": 14,
+    "imageUrl": "https://play-lh.googleusercontent.com/gJzOypyP-8AHJEROGZs8uklPIAgmp3LfgCkv8QjAxjlE4oxJCJMqYvRTDOg_8vCqv4w",
+    "link": "https://swye0n.tistory.com/m/10",
+    "rank": false,
+    "title": "엔대생",
+    "type": "App"
+  },
+  {
+    "id": "14-partyrun",
+    "description": "재 러닝에 대한 피트니스 앱.\n \n다른 사람들과 실시간으로 러닝을 하며 소통을 하고, 경쟁심리를 자극하여 더 러닝을 재미있게 즐길 수 있도록 하는 서비스.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223250259344)",
+    "generation": 14,
+    "imageUrl": "https://d2v80xjmx68n4w.cloudfront.net/members/portfolios/agAbc1690814517.jpg?w=500",
+    "link": "",
+    "rank": false,
+    "title": "파티런(PARTY RUN)",
+    "type": "App"
+  },
+  {
+    "id": "14-remak",
+    "description": "개인화된 AI 지식관리 서비스\n\n- 김승일\n- 송영현\n- 신상민",
+    "generation": 14,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "개인화된 AI 지식관리 서비스",
+    "type": ""
+  },
+  {
+    "id": "14-reviewmate",
+    "description": "여행 리뷰 통합 분석 및 관리 플랫폼 리뷰 메이트.\n\n여행 상품을 판매하는 회사들이 고객들의 리뷰들을 통합적으로 관리하면서 좋은 리뷰를 받을 수 있도록 솔루션을 제공하는 플랫폼.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223265200208)",
+    "generation": 14,
+    "imageUrl": "https://image.wibaek.com/soma/14-reviewmate.png",
+    "link": "",
+    "rank": false,
+    "title": "리뷰메이트",
+    "type": "Web"
+  },
+  {
+    "id": "14-thinkwithme",
+    "description": "아이디에이션에 익숙치 않은 SW 개발 프로젝트 구성원들이 아이디어 발상을 수월하게 할 수 있게끔 도와주는 온라인 화이트보드 협업 툴입니다.\n\nMiro와 비슷한 화이트보드 툴에 생성AI가 아이디에이션에 도움이 되는 콘텐츠들을 추가로 제공하는 서비스.\n\n현재는 서비스 종료 상태이다.\n\n- [Disquiet](https://disquiet.io/product/think-with-me)\n- [소마 블로그](https://blog.naver.com/sw_maestro/223260043682)",
+    "generation": 14,
+    "imageUrl": "https://media.disquiet.io/images/product/gallery/3b7047db6b42e8b5c6cf686658cbe2d0191ca8d1e08ff26f917fc81e8c8da64f?w=1200",
+    "link": "https://thinkwithme.io/",
+    "rank": false,
+    "title": "Think with Me",
+    "type": "Web"
+  },
+  {
+    "id": "14-tokpeanut",
+    "description": "AI 발표 준비 비서.\n\n- 김민경\n- 박유빈\n- 조영현",
+    "generation": 14,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "type": "",
+    "title": "tokpeanut"
+  },
+  {
+    "id": "14-venty",
+    "description": "팬덤 중심의 맞춤형 공유 클라우드를 제공하고 각 팬덤을 하나의 클라우드로 구성시켜, 팬들이 해당 클라우드에서 함께 모여 공동으로 클라우드를 설정하고 관리할 수 있도록 해주는 서비스.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223254350402)",
+    "generation": 14,
+    "imageUrl": "https://image.wibaek.com/soma/14-venty.png",
+    "link": "",
+    "rank": false,
+    "title": "VENTY",
+    "type": "App"
+  },
+  {
+    "id": "14-weddingmate",
+    "description": "예비 부부들과 웨딩 플래너들과의 매칭 서비스로, 예비 부부들에게는 원하는 웨딩 스타일과 연출을, 플래너에게는 본인 장점을 살린 더 나은 서비스를 제공할 수 있는 기회를 제공하는 프로젝트.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223256850272)",
+    "generation": 14,
+    "imageUrl": "https://image.wibaek.com/soma/14-weddingmate.png",
+    "link": "",
+    "rank": false,
+    "title": "웨딩메이트",
+    "type": "App"
+  },
+  {
+    "id": "14-dutying",
+    "description": "간호사 근무 관리 서비스\n\n기존의 어려운 근무표 제작 과정으로 불편함을 느끼던 수간호사에게 쉽고 편리한 근무표 제작 환경을 제공하고, 제작된 근무표를 동기화 해 번거로운 교대 근무 등록 및 확인 과정의 불편함을 해소하는 서비스.",
+    "generation": 14,
+    "imageUrl": "https://www.dutying.net/img/landing_1.webp",
+    "link": "https://www.dutying.net/",
+    "title": "Dutying(듀팅)",
+    "type": "App",
+    "rank": true
+  },
+  {
+    "id": "14-kobook",
+    "generation": 14,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/01/b9/c8/01b9c86f-ecc7-75a1-7708-6e111109829e/92c35e9f-a60a-45b8-a44c-2388169f2eff_5.5-1.png/406x228bb.png",
+    "link": "",
+    "title": "꼬북",
+    "type": "App",
+    "description": "우리 아이가 주인공인 동화\n\n생성 AI를 활용하여 아이 맞춤 동화를 만들어주는 서비스\n\n현재는 서비스 종료 상태이다.\n\n- [임수환](https://www.linkedin.com/in/suwhoan-lim-172554268/)",
+    "rank": true
+  },
+  {
+    "id": "14-moodmemo",
+    "description": "스탬프로 기록하는 감정기록 기반 AI 자동 생성 일기\n\n무드메모는 감정스탬프를 통한 감정기록을 기반으로 사용자에게 보다 가볍고 편리한 일기 작성 방식을 제안하며, AI 를 이용해 감정 기록을 기반으로 사용자의 하루를 정리 및 요약해주는 어플리케이션이다.\n\n현재는 서비스 종료 상태이다.",
+    "generation": 14,
+    "imageUrl": "https://play-lh.googleusercontent.com/m3Yu-rYS5AJGgE8DQzbVhTWtOvQlEdjoseUWSmk2thCu0kJav1-WTBgTzq8rQDPWomI=w240-h480-rw",
+    "link": "https://www.instagram.com/moodmemo_official/",
+    "title": "무드메모",
+    "type": "App",
+    "rank": true
+  },
+  {
+    "id": "14-savable",
+    "generation": 14,
+    "link": "",
+    "rank": true,
+    "title": "Savable",
+    "imageUrl": "https://image.wibaek.com/soma/14-savable.jpg",
+    "type": "App",
+    "description": "현명한 소비 습관 형성을 위한 소비 디톡스 챌린지 모바일 플랫폼.\n\n고물가 시대에 습관적 지출을 줄이고자 하는 사용자를 위한 절약 챌린지. 챌린지 참여자는 소소한 보상을 통해 절약에 대해 강력한 동기를 얻고, 자신의 절약 목표를 설정하고 달성할 수 있도록 지원하여 현명한 소비 습관을 형성.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223271462419)"
+  },
+  {
+    "id": "14-write-mate",
+    "description": "초보 웹소설 작가를 위한 소설 창작 어시스트\n아이디어를 체계적으로 분류하고 관리하며 이를 확장하여 높은 수준의 설정집을 만들 수 있도록 돕는 창작 어시스트 서비스이다.\n설정집을 만드는 과정에서 설정간의 연동 시스템, 인물 관계 시각화, 복구 및 실행 취소 등 다양한 편의 기능을 활용하며 효율적으로 작업할 수 있다.",
+    "generation": 14,
+    "imageUrl": "https://write-mate.net/_next/static/media/video1.1fd1d52f.gif",
+    "link": "https://write-mate.net/",
+    "title": "Write-Mate",
+    "type": "Web",
+    "rank": true
+  },
+  {
+    "id": "13-adevspoon",
+    "description": "IT직무 기술면접 1일 1질문 플랫폼\n\n매일 질문 받고 답변하고 사용자들과 답변 공유하고 다음에 드는 답변은 좋아요하고 모아보기까지!\n\n데이터베이스, 네트워크, 운영체제, 자료구조, 알고리즘, 깃까지 어디서부터 어디까지 해야할지 모르겠다고요?\n\n저희 앱에서 차근차근 공부해나가 보세요!",
+    "generation": 13,
+    "link": "https://apps.apple.com/kr/app/%EA%B0%9C%EB%B0%9C-%ED%95%9C-%EC%8A%A4%ED%91%BC/id1638716398",
+    "title": "개발한스푼",
+    "type": "App",
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/d2/c4/6e/d2c46e14-0bd3-c3c0-69c0-a9a3ac84f8f1/AppIcon-1x_U007emarketing-0-10-0-85-220.png/1200x630wa.png",
+    "rank": false
+  },
+  {
+    "id": "13-asyncrum",
+    "description": "비동기 스크럼 조직을 위한 화이트보드 협업 솔루션.\n\n- 이동언\n- 이진\n- 박지환",
+    "generation": 13,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "title": "asyncrum",
+    "type": ""
+  },
+  {
+    "id": "13-carefairy",
+    "description": "노인 요양시설 플랫폼\n\n- [최상원](https://github.com/ChoiSangwon)",
+    "generation": 13,
+    "imageUrl": "",
+    "link": "",
+    "title": "케어요정",
+    "type": "",
+    "rank": false
+  },
+  {
+    "id": "13-focus50",
+    "description": "집중 향상 뽀모도로 캠스터디 플랫폼\n\n[소마 블로그 글](https://blog.naver.com/sw_maestro/222895257565?viewType=pc)\n\n현재는 서비스 중단 상태이다.\n\n- [최승표](https://www.linkedin.com/in/pyo/)",
+    "generation": 13,
+    "link": "https://focus50.day/",
+    "title": "Focus50",
+    "type": "Web",
+    "rank": false,
+    "imageUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMjA5MjRfMTc1/MDAxNjYzOTUxMzUwNDQ1.vc5aCVJ_zGiRf41Lkanr7ebKKdktmJZX9ddfzUqF2O0g.Yx53Fg8cuZLD5Z_BDT93FcVhZBxqDlUMLTjRl48Ec-8g.JPEG.sw_maestro/KakaoTalk_20220922_230418030_05.jpg?type=w800"
+  },
+  {
+    "id": "13-urikiri",
+    "description": "배달비 줄이는 공동 주문 어플리케이션.\n\n- 나용성\n- 송해광\n- 곽수정",
+    "generation": 13,
+    "imageUrl": "",
+    "link": "",
+    "rank": false,
+    "type": "App",
+    "title": "우리끼리"
+  },
+  {
+    "id": "13-yeoreodigm",
+    "generation": 13,
+    "imageUrl": "",
+    "link": "https://www.youtube.com/channel/UCjRN2xcBUOuvMXMaQEDSsGQ/about",
+    "rank": false,
+    "title": "여러다임",
+    "type": "App",
+    "description": "제주도 여행 코스 추천 관리 서비스.\n\n현재는 서비스 종료 상태이다.\n\n- 이동기\n- 이원석\n- 김범철\n\n- [홈페이지](yeoreodigm.com)\n- [안드로이드 앱](https://play.google.com/store/apps/details?id=com.mobileaos.yeoreodigmaos&pli=1)\n- [iOS 앱](apps.apple.com/app/여러다임/id6444324229)\n"
+  },
+  {
+    "id": "13-nppang",
+    "description": "사용자가 직접 선택하는 지역 기반 공구, 소분 플랫폼\n\n원하는 물품의 소분 및 공동구매를 주선하고 참여할 수 있는 지역 기반 플랫폼",
+    "generation": 13,
+    "link": "",
+    "title": "N빵",
+    "type": "App",
+    "rank": true,
+    "imageUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMjEwMDlfMTM0/MDAxNjY1Mjg5OTc1MTM2.vsEdyUP9kaB3cCnNVY0ZZePdd-G2QAVX5e6yp2vgRgEg.wEN7fcQ5-wUJeQ_adBmUasopcvr3q9CU6JHqh_P2fuQg.PNG.sw_maestro/image.png?type=w800"
+  },
+  {
+    "id": "13-odi",
+    "generation": 13,
+    "imageUrl": "https://postfiles.pstatic.net/MjAyMjEwMTVfODMg/MDAxNjY1ODA0MDk2OTA5.hwdlyPSAKQGRxFmzdlhinLWcO69ff9_vPM9y6hKwfOgg.un2yKmzlVg4Z2TWwTWAs8n3wnUUPPzy6ys-CzA5G-bYg.PNG.sw_maestro/%EA%B7%B8%EB%A6%BC1.png?type=w966",
+    "link": "",
+    "title": "오디(ODi)",
+    "type": "App",
+    "rank": true,
+    "description": "스마트 정보 공유 오픈채팅 플랫폼\n\n기존의 오픈 채팅방에서 무분별한 메시지와 알림 문제, 유저 관리 문제를 인식함. 이를 대화 데이터에서 키워드 추출 및 요약 기술을 활용한 메신저 서비스를 개발·운영하여, 정보 공유 및 소통 효율성 극대화를 목적으로 함.\n\n- [소마 블로그 소개](https://blog.naver.com/sw_maestro/222916980603)"
+  },
+  {
+    "id": "13-voyager",
+    "description": "시각장애인을 위한 컴퓨터 비전 기반 보행 보조 서비스\n\n시각장애인의 이동권 향상을 위해 컴퓨터 비전 및 라이다 센서를 활용해 전방의 실시간 정보를 안내하여 안전하게 보행할 수 있도록 돕는 보행 내비게이션 앱\n\n- [지우석](https://www.linkedin.com/in/woosukji/)",
+    "generation": 13,
+    "imageUrl": "",
+    "link": "",
+    "title": "Voyager",
+    "type": "App",
+    "rank": true
+  }
+]

@@ -1,4 +1,3 @@
 User-Agent: *
 Allow: /
-Disallow: /admin/
 Sitemap: https://soma.wibaek.com/sitemap.xml

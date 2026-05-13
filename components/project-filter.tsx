@@ -1,22 +1,14 @@
-"use client"
-
-import { useState } from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Toggle } from "@/components/ui/toggle"
-import { cn } from "@/lib/utils"
+"use client";
 
 interface ProjectFilterProps {
-  types: string[]
-  generations: number[]
-  onTypeChange: (type: string | null) => void
-  onGenerationChange: (generation: number | null) => void
-  onExcellentChange: (excellent: boolean) => void
-  selectedType: string | null
-  selectedGeneration: number | null
-  excellentOnly: boolean
+  types: string[];
+  generations: number[];
+  onTypeChange: (type: string | null) => void;
+  onGenerationChange: (generation: number | null) => void;
+  onExcellentChange: (excellent: boolean) => void;
+  selectedType: string | null;
+  selectedGeneration: number | null;
+  excellentOnly: boolean;
 }
 
 export function ProjectFilter({
@@ -29,108 +21,53 @@ export function ProjectFilter({
   selectedGeneration,
   excellentOnly,
 }: ProjectFilterProps) {
-  const [typeOpen, setTypeOpen] = useState(false)
-  const [genOpen, setGenOpen] = useState(false)
-
   return (
     <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-8 flex-wrap">
-      <Popover open={typeOpen} onOpenChange={setTypeOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={typeOpen}
-            className="w-full sm:w-[200px] justify-between"
-          >
-            {selectedType ? selectedType : "모든 카테고리"}
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-full sm:w-[200px] p-0">
-          <Command>
-            <CommandInput placeholder="카테고리 검색..." />
-            <CommandList>
-              <CommandEmpty>카테고리를 찾을 수 없습니다.</CommandEmpty>
-              <CommandGroup>
-                <CommandItem
-                  onSelect={() => {
-                    onTypeChange(null)
-                    setTypeOpen(false)
-                  }}
-                >
-                  <Check className={cn("mr-2 h-4 w-4", selectedType === null ? "opacity-100" : "opacity-0")} />
-                  모든 카테고리
-                </CommandItem>
-                {types.map((type) => (
-                  <CommandItem
-                    key={type}
-                    onSelect={() => {
-                      onTypeChange(type)
-                      setTypeOpen(false)
-                    }}
-                  >
-                    <Check className={cn("mr-2 h-4 w-4", selectedType === type ? "opacity-100" : "opacity-0")} />
-                    {type}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
+      <label className="flex w-full flex-col gap-1 text-sm font-medium text-foreground sm:w-48">
+        카테고리
+        <select
+          value={selectedType ?? ""}
+          onChange={(event) => onTypeChange(event.target.value || null)}
+          className="h-10 rounded-md border border-input bg-background px-3 text-sm"
+        >
+          <option value="">모든 카테고리</option>
+          {types.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <Popover open={genOpen} onOpenChange={setGenOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={genOpen}
-            className="w-full sm:w-[200px] justify-between"
-          >
-            {selectedGeneration ? `${selectedGeneration}기` : "모든 기수"}
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-full sm:w-[200px] p-0">
-          <Command>
-            <CommandInput placeholder="기수 검색..." />
-            <CommandList>
-              <CommandEmpty>기수를 찾을 수 없습니다.</CommandEmpty>
-              <CommandGroup>
-                <CommandItem
-                  onSelect={() => {
-                    onGenerationChange(null)
-                    setGenOpen(false)
-                  }}
-                >
-                  <Check className={cn("mr-2 h-4 w-4", selectedGeneration === null ? "opacity-100" : "opacity-0")} />
-                  모든 기수
-                </CommandItem>
-                {generations.map((gen) => (
-                  <CommandItem
-                    key={gen}
-                    onSelect={() => {
-                      onGenerationChange(gen)
-                      setGenOpen(false)
-                    }}
-                  >
-                    <Check className={cn("mr-2 h-4 w-4", selectedGeneration === gen ? "opacity-100" : "opacity-0")} />
-                    {gen}기
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
+      <label className="flex w-full flex-col gap-1 text-sm font-medium text-foreground sm:w-48">
+        기수
+        <select
+          value={selectedGeneration ?? ""}
+          onChange={(event) =>
+            onGenerationChange(
+              event.target.value ? Number(event.target.value) : null
+            )
+          }
+          className="h-10 rounded-md border border-input bg-background px-3 text-sm"
+        >
+          <option value="">모든 기수</option>
+          {generations.map((generation) => (
+            <option key={generation} value={generation}>
+              {generation}기
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <Toggle
-        pressed={excellentOnly}
-        onPressedChange={onExcellentChange}
-        className="data-[state=on]:bg-yellow-100 data-[state=on]:text-yellow-800"
-      >
+      <label className="mt-1 inline-flex h-10 items-center gap-2 rounded-md border border-input px-3 text-sm font-medium">
+        <input
+          type="checkbox"
+          checked={excellentOnly}
+          onChange={(event) => onExcellentChange(event.target.checked)}
+          className="h-4 w-4"
+        />
         우수 프로젝트만 보기
-      </Toggle>
+      </label>
     </div>
-  )
+  );
 }

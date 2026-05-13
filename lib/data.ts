@@ -1,13 +1,4 @@
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  query,
-  where,
-  orderBy,
-} from "firebase/firestore";
-import { db } from "./firebase";
+import projectsData from "../content/projects.json";
 
 export type Project = {
   id: string;
@@ -15,149 +6,72 @@ export type Project = {
   link: string;
   description: string;
   imageUrl: string;
-  rank: number | null; // null = not ranked, 0 = ranked but unknown position
-  type: string; // e.g., "Web", "App", "AI"
-  generation: number; // 소프트웨어 마에스트로 기수
+  rank: boolean;
+  type: string;
+  generation: number;
+  createdAt?: string;
 };
 
-// 모든 프로젝트 가져오기
-export async function getProjects(): Promise<Project[]> {
-  try {
-    const projectsRef = collection(db, "projects");
-    const projectsSnapshot = await getDocs(projectsRef);
+type RawProject = {
+  id: string;
+  title: string;
+  link?: string;
+  description: string;
+  imageUrl?: string;
+  rank?: boolean | null;
+  type?: string;
+  generation: number;
+  createdAt?: string;
+};
 
-    return projectsSnapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        title: data.title,
-        link: data.link,
-        description: data.description,
-        imageUrl: data.imageUrl,
-        rank: data.rank,
-        type: data.type,
-        generation: data.generation,
-      } as Project;
-    });
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-    return [];
+function normalizeProject(project: RawProject): Project {
+  const normalized: Project = {
+    id: project.id,
+    title: project.title,
+    link: project.link ?? "",
+    description: project.description,
+    imageUrl: project.imageUrl ?? "",
+    rank: project.rank === true,
+    type: project.type ?? "",
+    generation: project.generation,
+  };
+
+  if (project.createdAt) {
+    normalized.createdAt = project.createdAt;
   }
+
+  return normalized;
 }
 
-// 특정 ID의 프로젝트 가져오기
-export async function getProjectById(id: string): Promise<Project | null> {
-  try {
-    const projectRef = doc(db, "projects", id);
-    const projectSnapshot = await getDoc(projectRef);
+const projects = (projectsData as RawProject[])
+  .map(normalizeProject)
+  .sort((a, b) => b.generation - a.generation || a.title.localeCompare(b.title));
 
-    if (!projectSnapshot.exists()) {
-      return null;
-    }
-
-    const data = projectSnapshot.data();
-    return {
-      id: projectSnapshot.id,
-      title: data.title,
-      link: data.link,
-      description: data.description,
-      imageUrl: data.imageUrl,
-      rank: data.rank,
-      type: data.type,
-      generation: data.generation,
-    } as Project;
-  } catch (error) {
-    console.error("Error fetching project:", error);
-    return null;
-  }
+export function getProjects(): Project[] {
+  return projects;
 }
 
-// 필터링된 프로젝트 가져오기
-export async function getFilteredProjects(
-  typeFilter: string | null,
-  generationFilter: number | null,
-  excellentOnly: boolean
-): Promise<Project[]> {
-  try {
-    const projectsQuery = collection(db, "projects");
-    const constraints = [];
-
-    // 필터 적용
-    if (typeFilter) {
-      constraints.push(where("type", "==", typeFilter));
-    }
-
-    if (generationFilter) {
-      constraints.push(where("generation", "==", generationFilter));
-    }
-
-    if (excellentOnly) {
-      constraints.push(where("rank", "==", true));
-    }
-
-    // 기수 순으로 내림차순 정렬 추가
-    constraints.push(orderBy("generation", "desc"));
-
-    // 쿼리 실행
-    const querySnapshot = await getDocs(query(projectsQuery, ...constraints));
-
-    return querySnapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        title: data.title,
-        link: data.link,
-        description: data.description,
-        imageUrl: data.imageUrl,
-        rank: data.rank,
-        type: data.type,
-        generation: data.generation,
-      } as Project;
-    });
-  } catch (error) {
-    console.error("Error fetching filtered projects:", error);
-    return [];
-  }
+export function getProjectById(id: string): Project | null {
+  return projects.find((project) => project.id === id) ?? null;
 }
 
-// 프로젝트 타입 목록 가져오기
-export async function getProjectTypes(): Promise<string[]> {
-  try {
-    const projectsRef = collection(db, "projects");
-    const projectsSnapshot = await getDocs(projectsRef);
-
-    const types = new Set<string>();
-    projectsSnapshot.docs.forEach((doc) => {
-      const data = doc.data();
-      if (data.type) {
-        types.add(data.type);
-      }
-    });
-
-    return Array.from(types);
-  } catch (error) {
-    console.error("Error fetching project types:", error);
-    return [];
-  }
+export function getProjectTypes(): string[] {
+  return Array.from(
+    new Set(projects.map((project) => project.type).filter(Boolean))
+  ).sort((a, b) => a.localeCompare(b));
 }
 
-// 프로젝트 기수 목록 가져오기
-export async function getProjectGenerations(): Promise<number[]> {
-  try {
-    const projectsRef = collection(db, "projects");
-    const projectsSnapshot = await getDocs(projectsRef);
+export function getProjectGenerations(): number[] {
+  return Array.from(new Set(projects.map((project) => project.generation))).sort(
+    (a, b) => b - a
+  );
+}
 
-    const generations = new Set<number>();
-    projectsSnapshot.docs.forEach((doc) => {
-      const data = doc.data();
-      if (data.generation) {
-        generations.add(data.generation);
-      }
-    });
-
-    return Array.from(generations).sort((a, b) => b - a); // 내림차순 정렬
-  } catch (error) {
-    console.error("Error fetching project generations:", error);
-    return [];
-  }
+export function getProjectMetadataDescription(project: Project): string {
+  return project.description
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+    .replace(/[#*_`>-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 160);
 }

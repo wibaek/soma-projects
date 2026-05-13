@@ -1,62 +1,48 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { type Project } from "@/lib/data";
 
 interface ProjectPageProps {
-  project: Project | null;
+  project: Project;
 }
 
 export default function ProjectPage({ project }: ProjectPageProps) {
-  const router = useRouter();
-
-  if (!project) {
-    return (
-      <div className="container mx-auto py-16 px-4 text-center">
-        <h1 className="text-2xl font-bold mb-4">프로젝트를 찾을 수 없습니다</h1>
-        <Button onClick={() => router.push("/")}>
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          프로젝트 목록으로 돌아가기
-        </Button>
-      </div>
-    );
-  }
-
   return (
     <main className="container mx-auto py-8 px-4">
-      <Button variant="ghost" onClick={() => router.push("/")} className="mb-6">
+      <Link
+        href="/"
+        className="mb-6 inline-flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+      >
         <ArrowLeft className="mr-2 h-4 w-4" />
         프로젝트 목록으로 돌아가기
-      </Button>
+      </Link>
 
       <div className="grid gap-8 md:grid-cols-[2fr_1fr]">
         <div>
           <div className="mb-6">
             <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
             <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>{project.type}</Badge>
-              <Badge variant="outline">{project.generation}기</Badge>
+              {project.type && (
+                <span className="rounded-full bg-primary px-2 py-1 text-xs font-medium text-primary-foreground">
+                  {project.type}
+                </span>
+              )}
+              <span className="rounded-full border px-2 py-1 text-xs font-medium">
+                {project.generation}기
+              </span>
               {project.rank && (
-                <Badge
-                  variant="secondary"
-                  className="bg-yellow-100 text-yellow-800"
-                >
+                <span className="rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
                   우수 프로젝트
-                </Badge>
+                </span>
               )}
             </div>
           </div>
 
-          <Card className="p-6">
+          <section className="rounded-lg border bg-card p-6">
             <MarkdownRenderer content={project.description} />
-          </Card>
+          </section>
         </div>
 
         <div className="space-y-6">
@@ -66,6 +52,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
               alt={project.title}
               fill
               className="object-cover"
+              sizes="(min-width: 768px) 33vw, 100vw"
             />
           </div>
 
@@ -80,7 +67,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
                 <span className="text-sm text-muted-foreground">
                   프로젝트 유형:
                 </span>
-                <p>{project.type}</p>
+                <p>{project.type || "미분류"}</p>
               </div>
               {project.rank && (
                 <div>

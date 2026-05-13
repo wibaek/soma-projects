@@ -1,50 +1,100 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/data";
 
 interface ProjectCardProps {
   project: Project;
 }
 
+const PLAIN_TEXT_LIMIT = 110;
+
+function plainPreview(markdown: string, title: string): string {
+  const stripped = markdown
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/[#*_`>~|]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const withoutTitle = stripped.startsWith(title)
+    ? stripped.slice(title.length).replace(/^[\s\-—–·:]+/, "")
+    : stripped;
+
+  const clean = withoutTitle.trim();
+  if (!clean) return "";
+  if (clean.length <= PLAIN_TEXT_LIMIT) return clean;
+  return clean.slice(0, PLAIN_TEXT_LIMIT).replace(/\s+\S*$/, "") + "…";
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
+  const preview = plainPreview(project.description, project.title);
+  const hasImage = Boolean(project.imageUrl);
+
   return (
-    <Link href={`/projects/${project.id}`}>
-      <article className="h-full overflow-hidden rounded-lg border bg-card transition-shadow hover:shadow-lg">
-        <div className="relative h-48 w-full">
+    <Link
+      href={`/projects/${project.id}`}
+      className="card-hover group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card"
+    >
+      <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-border bg-subtle">
+        {hasImage ? (
           <Image
-            src={project.imageUrl || "/placeholder.svg"}
+            src={project.imageUrl}
             alt={project.title}
             fill
-            className="object-cover"
+            unoptimized
+            className="card-image object-cover"
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           />
-          {project.rank && (
-            <div className="absolute top-2 right-2">
-              <span className="rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
-                우수 프로젝트
-              </span>
-            </div>
-          )}
-          <div className="absolute top-2 left-2">
-            <span className="rounded-full border bg-white/80 px-2 py-1 text-xs font-medium backdrop-blur-sm">
-              {project.generation}기
-            </span>
+        ) : (
+          <NoImage title={project.title} type={project.type} />
+        )}
+
+        {project.rank && (
+          <div className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-paper px-2.5 py-1 text-[11px] font-medium text-ink-deep shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            우수 프로젝트
           </div>
+        )}
+      </div>
+
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          {project.type && <span>{project.type}</span>}
+          {project.type && <span className="text-border">/</span>}
+          <span className="font-mono normal-case tracking-tight">
+            {project.generation}기
+          </span>
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-          {project.type && (
-            <div className="flex flex-wrap gap-2">
-              <span className="rounded-full border px-2 py-1 text-xs font-medium">
-                {project.type}
-              </span>
-            </div>
-          )}
+
+        <h3 className="mt-2.5 text-[16.5px] font-semibold leading-snug tracking-tight text-ink-deep">
+          {project.title}
+        </h3>
+
+        {preview && (
+          <p className="mt-2 line-clamp-2 text-[13.5px] leading-relaxed text-muted-foreground">
+            {preview}
+          </p>
+        )}
+
+        <div className="mt-auto flex items-center justify-between pt-5">
+          <span className="text-[12px] font-medium text-muted-foreground transition-colors group-hover:text-ink-deep">
+            자세히 보기
+          </span>
+          <ArrowUpRight className="arrow-mover h-3.5 w-3.5 text-muted-foreground group-hover:text-ink-deep" />
         </div>
-        <div className="flex justify-end p-4 pt-0">
-          <span className="text-sm text-muted-foreground">상세 보기 →</span>
-        </div>
-      </article>
+      </div>
     </Link>
+  );
+}
+
+function NoImage({ type }: { title: string; type: string }) {
+  return (
+    <div className="flex h-full w-full items-center justify-center">
+      <span className="text-[10.5px] font-medium uppercase tracking-[0.22em] text-muted-foreground/70">
+        {type || "Project"}
+      </span>
+    </div>
   );
 }

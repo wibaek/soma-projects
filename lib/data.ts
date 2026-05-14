@@ -1,5 +1,8 @@
 import projectsData from "../content/projects.json";
 
+const DEFAULT_PROJECT_TYPE = "기타";
+const PROJECT_TYPE_ORDER = ["App", "Web", DEFAULT_PROJECT_TYPE];
+
 export type Project = {
   id: string;
   title: string;
@@ -32,7 +35,7 @@ function normalizeProject(project: RawProject): Project {
     description: project.description,
     imageUrl: project.imageUrl ?? "",
     rank: project.rank === true,
-    type: project.type ?? "",
+    type: project.type?.trim() || DEFAULT_PROJECT_TYPE,
     generation: project.generation,
   };
 
@@ -57,8 +60,16 @@ export function getProjectById(id: string): Project | null {
 
 export function getProjectTypes(): string[] {
   return Array.from(
-    new Set(projects.map((project) => project.type).filter(Boolean))
-  ).sort((a, b) => a.localeCompare(b));
+    new Set(projects.map((project) => project.type))
+  ).sort(
+    (a, b) =>
+      typeSortIndex(a) - typeSortIndex(b) || a.localeCompare(b, "ko")
+  );
+}
+
+function typeSortIndex(type: string): number {
+  const index = PROJECT_TYPE_ORDER.indexOf(type);
+  return index === -1 ? PROJECT_TYPE_ORDER.length : index;
 }
 
 export function getProjectGenerations(): number[] {

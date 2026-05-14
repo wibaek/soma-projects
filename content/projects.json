@@ -71,7 +71,7 @@
   },
   {
     "id": "16-dasistand",
-    "description": "다양한 시각의 뉴스 스탠드",
+    "description": "AI 멀티에이전트로 동일 이슈의 여러 언론 보도 관점과 정치적 편향을 비교·요약해 보여주는 뉴스 비교 앱",
     "type": "App",
     "generation": 16,
     "createdAt": "2025-08-10T11:51:10.458Z",
@@ -102,12 +102,12 @@
   {
     "id": "16-ghostrunner",
     "title": "고스트러너 - 언제 어디서나 함께 달리는 고스트러너",
-    "description": "지금, 어제의 나와 경쟁한다\n과거의 기록을 고스트로 소환해 실시간으로 겨룰 수 있는 몰입형 러닝 앱.\n코스 추천부터 음성/메트로놈 피드백까지, 지루할 틈이 없어요.",
+    "description": "과거 기록 또는 AI 고스트와 실시간으로 경쟁하고, 코스 추천과 음성·메트로놈 피드백을 제공하는 러닝 앱",
     "createdAt": "2025-09-23T11:07:39.441Z",
     "imageUrl": "",
     "link": "https://ghostrun.io",
     "generation": 16,
-    "type": "Web"
+    "type": "App"
   },
   {
     "id": "16-gyohwan-com",
@@ -171,10 +171,10 @@
   },
   {
     "id": "16-phenokio",
-    "link": "https://phenokio.vercel.app",
-    "description": "디지털 피노타이핑(Digital Phenotyping)을 통한 안부 확인",
+    "link": "https://play.google.com/store/apps/details?id=com.mink.phenokio",
+    "description": "어르신의 일상 패턴과 위치·활동 데이터를 분석해 가족에게 안부 인사이트를 제공하는 AI 안부 앱",
     "imageUrl": "",
-    "type": "Web",
+    "type": "App",
     "generation": 16,
     "createdAt": "2025-08-14T16:02:50.175Z",
     "title": "피노키오(Phenokio) - 멀리 있어도 이어지는 우리 가족의 하루"
@@ -203,9 +203,9 @@
     "id": "16-sijeom",
     "title": "시점 - 한눈에 보는 이슈 흐름, 당신의 이슈 추적 서비스",
     "link": "https://sijeom.kr",
-    "description": "한눈에 보는 이슈 흐름, 당신의 이슈 추적 서비스",
+    "description": "이슈별 뉴스 타임라인, 실시간 후속기사 알림, 추천 피드를 제공하는 뉴스 앱",
     "imageUrl": "",
-    "type": "Web",
+    "type": "App",
     "generation": 16,
     "createdAt": "2025-08-14T16:21:36.944Z"
   },
@@ -242,12 +242,48 @@
   {
     "id": "16-whipbook",
     "link": "https://play.google.com/store/apps/details?id=com.whipbook.app",
-    "description": "목록에 있는 모든 책을 읽을 시간이 부족하신가요?\nWhipbook은 현대인의 삶에 맞춰 빠르고 집중력 있게, 그리고 만족스러운 독서를 위해 만들어진 앱입니다.\n\nWhipbook은 짧은 학습을 위한 한입 크기의 책 요약을 제공합니다. 출퇴근 중, 점심 시간, 잠자리에 들기 전, 언제 어디서든 Whipbook은 베스트셀러의 핵심 메시지를 단 1분 만에 이해할 수 있도록 도와줍니다.\n\n전문가가 작성한 요약은 핵심적인 통찰력을 빠르게 전달하도록 설계되어 속독과 부담 없이 정보를 얻는 데 적합합니다.\n\n나만의 독서 목록을 만들고 읽은 책을 추적하세요. 시대를 초월하는 고전부터 인기 도서까지, 그 어느 때보다 빠르게 관심을 가질 만한 책을 찾아보세요.\n\n아직 다음에 무엇을 읽을지 고민 중이신가요? Whipbook의 짧고 솔직한 서평을 통해 수천 권의 책을 살펴보고, 목표, 관심사, 또는 호기심에 맞는 책을 찾을 수 있습니다.\n\n왜 Whipbook인가요?\n• 60초 안에 책의 핵심을 파악하세요\n• 매일 마이크로 러닝을 통해 지식을 업그레이드하세요\n• 시간을 절약하고 더 똑똑하게 읽으세요\n• 기억에 남는 요약본으로 나만의 독서 목록을 구성하세요\n• 믿을 수 있는 서평으로 다음 읽을 책을 찾아보세요\n마이크로 러닝과 속독을 위한 최고의 독서 앱입니다.\n\n읽고 싶은 책을 모두 읽을 시간이 부족하신가요?\nWhipbook은 현대인의 삶에 맞춰 설계된 빠르고 집중력 있는 독서 앱입니다.\n\n마이크로 러닝에 최적화된 짧은 요약본을 제공합니다. 출퇴근 중, 점심 시간, 잠자리에 들기 전 편안한 시간에도 Whipbook은 베스트셀러의 핵심 메시지를 단 1분 만에 이해할 수 있도록 도와줍니다.\n\n전문가가 작성한 요약본은 핵심적인 통찰력을 빠르게 전달하도록 설계되어 속독과 부담 없이 정보를 얻는 데 적합합니다.\n\n나만의 독서 목록을 만들고 읽은 책을 추적하세요. 시대를 초월하는 고전부터 인기 도서까지, 그 어느 때보다 빠르게 주목할 만한 책을 찾아보세요.\n\n아직 다음에 무엇을 읽을지 고민 중이신가요? 짧고 솔직한 서평을 통해 수천 권의 책을 살펴보고, 목표, 관심사, 또는 호기심에 맞는 책을 찾을 수 있도록 도와드립니다.\n\n왜 Whipbook인가요?\n• 60초 안에 책의 핵심을 파악하세요.\n• 매일 간단한 학습을 통해 지식을 향상시키세요.\n• 시간을 절약하고 더 똑똑하게 읽으세요.\n• 기억에 남는 요약으로 나만의 독서 목록을 구성하세요.\n• 믿을 수 있는 서평으로 다음 읽을 책을 찾아보세요.",
+    "description": "짧은 책 요약, 독서 목록 관리, 서평 탐색을 제공하는 마이크로 러닝 독서 앱",
     "type": "App",
     "generation": 16,
     "createdAt": "2025-08-10T11:57:25.177Z",
     "imageUrl": "https://play-lh.googleusercontent.com/uw28K1bXzxIUcizCgHVpQB5z6anzn62NLCEWtk7SRIKSFJNo-8vTxja0nSAe3aShJWTiGPMlCzqZjElEyWWtfg=w1052-h592-rw",
     "title": "Whipbook - 도서 추천 숏폼 서비스"
+  },
+  {
+    "id": "16-coblocks",
+    "title": "CoBlocks - 로블록스 코드 시각화 및 블록 코딩 학습 서비스",
+    "link": "https://github.com/team-croffle/coblocks-web",
+    "description": "로블록스 코드 시각화와 블록 코딩 학습을 지원하는 웹 기반 교육 서비스",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16
+  },
+  {
+    "id": "16-dynamiadmin",
+    "title": "DynamiAdmin - AI-native back-office solution",
+    "link": "https://github.com/SWM16-SlowStarter/DYNAMI_AI",
+    "description": "B2B 및 내부 도구용 관리자 패널을 AI로 생성하는 AI-native 백오피스 솔루션",
+    "imageUrl": "",
+    "type": "Web",
+    "generation": 16
+  },
+  {
+    "id": "16-cats-library",
+    "title": "고양이 책집사 / Cat's Library - 독서 기록, 문장 수집 앱",
+    "link": "https://apps.apple.com/kr/app/cats-library/id6752113848",
+    "description": "고양이 테마의 독서 타이머, 문장 수집, 독서 기록, 서재 관리를 제공하는 독서 앱",
+    "imageUrl": "",
+    "type": "App",
+    "generation": 16
+  },
+  {
+    "id": "16-trieyes",
+    "title": "Trieyes: Trial of Gods - 카드 기반 로그라이크 RPG",
+    "link": "https://apps.apple.com/kr/app/trieyes-trial-of-gods/id6753890660",
+    "description": "카드와 유물을 활용해 미지의 공간을 탈출하는 카드 기반 로그라이크 RPG 모바일 게임",
+    "imageUrl": "",
+    "type": "App",
+    "generation": 16
   },
   {
     "id": "15-edufi",
@@ -281,13 +317,13 @@
   },
   {
     "id": "15-oatnote",
-    "description": "LLM 기반 메모 자동 요약 정리 및 정보관리 서비스\n\n- 배진호\n- 윤민지\n- 조태식",
+    "description": "LLM, STT, OCR 기반으로 메모를 자동 분류·검색·요약하는 정보관리 서비스\n\n- 배진호\n- 윤민지\n- 조태식",
     "generation": 15,
     "imageUrl": "",
-    "link": "",
+    "link": "https://www.oatnote.io",
     "rank": false,
     "title": "Oatnote",
-    "type": ""
+    "type": "Web"
   },
   {
     "id": "15-oneIt",
@@ -352,18 +388,18 @@
   {
     "id": "15-ssdam",
     "generation": 15,
-    "link": "https://ssdam.ink",
+    "link": "https://episod.ink/",
     "title": "쓰담",
     "type": "Web",
     "imageUrl": "https://ssdam.ink/img/editor.2b373c4c.png",
     "rank": true,
-    "description": "AI 집필 비서와 함께하는 책 집필 서비스\n\n“쓰담, 이야기를 쓰고, 생각을 담다” AI집필 비서와 함께 책 출판까지의 과정을 도와주는 웹 서비스\n\n- [소마 블로그 소개](https://blog.naver.com/sw_maestro/223594664353)"
+    "description": "AI 집필 비서 기반 도서 집필·출판 플랫폼. 목차 구성, 원고 작성, 교정, 출판 과정을 돕는다.\n\n쓰담은 후속 브랜드 에피소드(Episod)로 확장된 것으로 확인된다.\n\n- [소마 블로그 소개](https://blog.naver.com/sw_maestro/223594664353)"
   },
   {
     "id": "14-coclimb",
     "generation": 14,
     "imageUrl": "",
-    "link": "",
+    "link": "https://github.com/CoClimb/coclimb-backend",
     "rank": false,
     "title": "Coclimb",
     "type": "App",
@@ -393,7 +429,7 @@
     "id": "14-mybrary",
     "generation": 14,
     "imageUrl": "",
-    "link": "",
+    "link": "https://play.google.com/store/apps/details?id=kr.mybrary.mybrary&hl=ko-KR",
     "rank": false,
     "title": "마이브러리",
     "type": "App",
@@ -404,7 +440,7 @@
     "description": "N명의 대학생들이 모여 즐겁게 서로를 만나고 또 연결되게끔 하는 프로젝트.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223270908653)",
     "generation": 14,
     "imageUrl": "https://play-lh.googleusercontent.com/gJzOypyP-8AHJEROGZs8uklPIAgmp3LfgCkv8QjAxjlE4oxJCJMqYvRTDOg_8vCqv4w",
-    "link": "https://swye0n.tistory.com/m/10",
+    "link": "https://play.google.com/store/apps/details?id=com.sshdart.dart_flutter",
     "rank": false,
     "title": "엔대생",
     "type": "App"
@@ -464,7 +500,7 @@
     "description": "팬덤 중심의 맞춤형 공유 클라우드를 제공하고 각 팬덤을 하나의 클라우드로 구성시켜, 팬들이 해당 클라우드에서 함께 모여 공동으로 클라우드를 설정하고 관리할 수 있도록 해주는 서비스.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223254350402)",
     "generation": 14,
     "imageUrl": "https://image.wibaek.com/soma/14-venty.png",
-    "link": "",
+    "link": "https://github.com/SWmaestro-Venty",
     "rank": false,
     "title": "VENTY",
     "type": "App"
@@ -474,7 +510,7 @@
     "description": "예비 부부들과 웨딩 플래너들과의 매칭 서비스로, 예비 부부들에게는 원하는 웨딩 스타일과 연출을, 플래너에게는 본인 장점을 살린 더 나은 서비스를 제공할 수 있는 기회를 제공하는 프로젝트.\n\n- [소마 블로그](https://blog.naver.com/sw_maestro/223256850272)",
     "generation": 14,
     "imageUrl": "https://image.wibaek.com/soma/14-weddingmate.png",
-    "link": "",
+    "link": "https://dev.weddingmate.co.kr",
     "rank": false,
     "title": "웨딩메이트",
     "type": "App"
@@ -512,7 +548,7 @@
   {
     "id": "14-savable",
     "generation": 14,
-    "link": "",
+    "link": "https://linktr.ee/savable",
     "rank": true,
     "title": "Savable",
     "imageUrl": "https://image.wibaek.com/soma/14-savable.jpg",
@@ -544,10 +580,10 @@
     "description": "비동기 스크럼 조직을 위한 화이트보드 협업 솔루션.\n\n- 이동언\n- 이진\n- 박지환",
     "generation": 13,
     "imageUrl": "",
-    "link": "",
+    "link": "https://github.com/Whiteboard-Journey/asyncrum-frontend",
     "rank": false,
     "title": "asyncrum",
-    "type": ""
+    "type": "Web"
   },
   {
     "id": "13-carefairy",
@@ -593,7 +629,7 @@
     "id": "13-nppang",
     "description": "사용자가 직접 선택하는 지역 기반 공구, 소분 플랫폼\n\n원하는 물품의 소분 및 공동구매를 주선하고 참여할 수 있는 지역 기반 플랫폼",
     "generation": 13,
-    "link": "",
+    "link": "https://linktr.ee/chocobread",
     "title": "N빵",
     "type": "App",
     "rank": true,
@@ -603,7 +639,7 @@
     "id": "13-odi",
     "generation": 13,
     "imageUrl": "https://postfiles.pstatic.net/MjAyMjEwMTVfODMg/MDAxNjY1ODA0MDk2OTA5.hwdlyPSAKQGRxFmzdlhinLWcO69ff9_vPM9y6hKwfOgg.un2yKmzlVg4Z2TWwTWAs8n3wnUUPPzy6ys-CzA5G-bYg.PNG.sw_maestro/%EA%B7%B8%EB%A6%BC1.png?type=w966",
-    "link": "",
+    "link": "https://appshunter.io/ios/app/1627956943",
     "title": "오디(ODi)",
     "type": "App",
     "rank": true,
@@ -614,7 +650,7 @@
     "description": "시각장애인을 위한 컴퓨터 비전 기반 보행 보조 서비스\n\n시각장애인의 이동권 향상을 위해 컴퓨터 비전 및 라이다 센서를 활용해 전방의 실시간 정보를 안내하여 안전하게 보행할 수 있도록 돕는 보행 내비게이션 앱\n\n- [지우석](https://www.linkedin.com/in/woosukji/)",
     "generation": 13,
     "imageUrl": "",
-    "link": "",
+    "link": "https://www.handmk.com/news/articleView.html?idxno=14482",
     "title": "Voyager",
     "type": "App",
     "rank": true

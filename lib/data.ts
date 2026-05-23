@@ -1,4 +1,4 @@
-import projectsData from "../content/projects.json";
+import projectsData from "../data/projects.json";
 
 const DEFAULT_PROJECT_TYPE = "기타";
 const PROJECT_TYPE_ORDER = ["App", "Web", DEFAULT_PROJECT_TYPE];

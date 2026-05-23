@@ -6,7 +6,6 @@
 
 @layer base {
   :root {
-    /* SW Maestro brand-derived palette */
     --background: 0 0% 100%;
     --foreground: 218 55% 11%;
     --ink: 215 88% 19%;
@@ -34,7 +33,6 @@
     --brand-hover: 209 87% 39%;
     --brand-soft: 215 80% 94%;
 
-    /* SOMA orange — extremely sparing */
     --accent: 33 96% 54%;
     --accent-foreground: 218 55% 11%;
     --accent-soft: 33 100% 94%;
@@ -85,12 +83,12 @@
   }
 }
 
-/* Card hover */
 .card-hover {
   transition:
     border-color 0.2s ease,
     transform 0.2s ease;
 }
+
 .card-hover:hover {
   border-color: hsl(var(--ink-deep));
 }
@@ -98,6 +96,7 @@
 .card-hover .card-image {
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+
 .card-hover:hover .card-image {
   transform: scale(1.025);
 }
@@ -105,6 +104,7 @@
 .card-hover .arrow-mover {
   transition: transform 0.2s ease;
 }
+
 .card-hover:hover .arrow-mover {
   transform: translate(2px, -2px);
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import { useMemo, useState } from "react";
 import { SearchX } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";

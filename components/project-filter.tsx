@@ -1,5 +1,3 @@
-"use client";
-
 import { Search, Sparkles, X, ChevronDown } from "lucide-react";
 
 interface ProjectFilterProps {

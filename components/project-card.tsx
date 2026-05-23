@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/data";
 
@@ -33,19 +31,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const hasImage = Boolean(project.imageUrl);
 
   return (
-    <Link
-      href={`/projects/${project.id}`}
+    <a
+      href={`/projects/${project.id}/`}
       className="card-hover group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-border bg-subtle">
         {hasImage ? (
-          <Image
+          <img
             src={project.imageUrl}
             alt={project.title}
-            fill
-            unoptimized
-            className="card-image object-cover"
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="card-image h-full w-full object-cover"
+            loading="lazy"
           />
         ) : (
           <NoImage title={project.title} type={project.type} />
@@ -85,7 +81,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <ArrowUpRight className="arrow-mover h-3.5 w-3.5 text-muted-foreground group-hover:text-ink-deep" />
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 

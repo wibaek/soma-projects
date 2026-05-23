@@ -1,27 +1,25 @@
-import Image from "next/image";
-import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { type Project } from "@/lib/data";
 
-interface ProjectPageProps {
+interface ProjectDetailPageProps {
   project: Project;
 }
 
-export default function ProjectPage({ project }: ProjectPageProps) {
+export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   const hasImage = Boolean(project.imageUrl);
 
   return (
     <main className="relative">
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-5 pt-10 sm:px-8 sm:pt-14">
-          <Link
+          <a
             href="/"
             className="group inline-flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-ink-deep"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
             프로젝트 목록으로
-          </Link>
+          </a>
 
           <div className="mt-10 flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
             <span className="font-mono normal-case tracking-tight">
@@ -51,14 +49,11 @@ export default function ProjectPage({ project }: ProjectPageProps) {
           <div className="mt-10 pb-12 sm:pb-16">
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-border bg-subtle sm:aspect-[21/9]">
               {hasImage ? (
-                <Image
+                <img
                   src={project.imageUrl}
                   alt={project.title}
-                  fill
-                  unoptimized
-                  priority
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 1024px, 100vw"
+                  loading="eager"
+                  className="h-full w-full object-cover"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center">

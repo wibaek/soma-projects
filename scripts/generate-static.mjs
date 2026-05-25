@@ -96,6 +96,7 @@ function collectImports(chunk, manifest, seen = new Set()) {
 
 function buildHtml({ appHtml, pageData, meta, assetTags }) {
   const canonicalUrl = absoluteUrl(meta.path);
+  const metaImageUrl = absoluteImageUrl(meta.image);
   const serializedData = JSON.stringify(pageData).replace(/</g, "\\u003c");
 
   return `<!doctype html>
@@ -114,11 +115,14 @@ function buildHtml({ appHtml, pageData, meta, assetTags }) {
       meta.description
     )}">
     <meta property="og:url" content="${escapeAttribute(canonicalUrl)}">
+    <meta property="og:image" content="${escapeAttribute(metaImageUrl)}">
+    <meta property="og:image:alt" content="${escapeAttribute(meta.title)}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeAttribute(meta.title)}">
     <meta name="twitter:description" content="${escapeAttribute(
       meta.description
     )}">
+    <meta name="twitter:image" content="${escapeAttribute(metaImageUrl)}">
     <script async src="https://www.googletagmanager.com/gtag/js?id=${analyticsId}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -185,6 +189,14 @@ function absoluteUrl(routePath) {
   }
 
   return `${SITE_URL}${routePath}`;
+}
+
+function absoluteImageUrl(imageUrl) {
+  if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+    return imageUrl;
+  }
+
+  return `${SITE_URL}${imageUrl.startsWith("/") ? imageUrl : `/${imageUrl}`}`;
 }
 
 function escapeHtml(value) {

@@ -14,11 +14,13 @@ export const HOME_TITLE =
   "SOMA Projects - 소프트웨어 마에스트로 프로젝트 아카이브";
 export const HOME_DESCRIPTION =
   "소프트웨어 마에스트로 프로그램의 모든 프로젝트를 한 곳에서. 기수별·분야별로 탐색하고, 우수 프로젝트를 한눈에 확인하세요.";
+export const DEFAULT_OG_IMAGE = "/placeholder.svg";
 
 export type PageMeta = {
   title: string;
   description: string;
   path: string;
+  image: string;
   type: "website" | "article";
 };
 
@@ -46,6 +48,7 @@ export function getStaticRoutes(): StaticRoute[] {
         title: HOME_TITLE,
         description: HOME_DESCRIPTION,
         path: "/",
+        image: DEFAULT_OG_IMAGE,
         type: "website",
       },
       includeInSitemap: true,
@@ -64,6 +67,7 @@ export function getStaticRoutes(): StaticRoute[] {
         title: `${project.title} - SOMA Projects`,
         description: getProjectMetadataDescription(project),
         path,
+        image: project.imageUrl || DEFAULT_OG_IMAGE,
         type: "article",
       },
       includeInSitemap: true,
@@ -79,6 +83,7 @@ export function getStaticRoutes(): StaticRoute[] {
       title: "페이지를 찾을 수 없습니다 - SOMA Projects",
       description: "요청한 페이지를 찾을 수 없습니다.",
       path: "/404.html",
+      image: DEFAULT_OG_IMAGE,
       type: "website",
     },
     includeInSitemap: false,
@@ -113,6 +118,7 @@ export function getRouteByPath(path: string): StaticRoute | null {
       title: `${project.title} - SOMA Projects`,
       description: getProjectMetadataDescription(project),
       path: routePath,
+      image: project.imageUrl || DEFAULT_OG_IMAGE,
       type: "article",
     },
     includeInSitemap: true,

@@ -39,6 +39,7 @@ app repo에는 갱신된 submodule commit 포인터만 반영합니다.
 선택 필드:
 
 - `link`: 프로젝트 외부 링크
+- `links`: 프로젝트 외부 링크가 여러 개일 때 사용하는 URL 배열
 - `imageUrl`: 대표 이미지 URL
 - `type`: 프로젝트 유형. `App`, `Web`, `기타` 중 하나를 사용하며 비어 있으면 `기타`로 처리
 - `rank`: 우수 프로젝트 여부

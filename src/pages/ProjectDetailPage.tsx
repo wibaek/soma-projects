@@ -8,6 +8,12 @@ interface ProjectDetailPageProps {
 
 export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   const hasImage = Boolean(project.imageUrl);
+  const projectLinks =
+    project.links.length > 0
+      ? project.links
+      : project.link
+        ? [{ url: project.link, label: "프로젝트 링크" }]
+        : [];
 
   return (
     <main className="relative">
@@ -100,16 +106,8 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
                 </dl>
               </div>
 
-              {project.link ? (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex w-full items-center justify-between gap-2 rounded-lg bg-ink px-4 py-3 text-[14px] font-medium text-paper transition-colors hover:bg-ink-deep"
-                >
-                  <span>프로젝트 방문하기</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+              {projectLinks.length > 0 ? (
+                <ProjectLinks links={projectLinks} />
               ) : (
                 <div className="rounded-lg border border-dashed border-border px-4 py-3 text-center text-[13px] text-muted-foreground">
                   공식 링크가 제공되지 않았습니다
@@ -120,6 +118,46 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
         </div>
       </section>
     </main>
+  );
+}
+
+function ProjectLinks({
+  links,
+}: {
+  links: Array<{ url: string; label: string }>;
+}) {
+  return (
+    <div className="space-y-2">
+      {links.map((link, index) => (
+        <a
+          key={`${link.url}-${index}`}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`group flex w-full items-center justify-between gap-3 rounded-lg px-4 py-3 text-[14px] font-medium transition-colors ${
+            index === 0
+              ? "bg-ink text-paper hover:bg-ink-deep"
+              : "border border-border bg-background text-foreground hover:bg-subtle"
+          }`}
+        >
+          <span className="min-w-0">
+            <span className="block truncate">
+              {links.length === 1 ? "프로젝트 방문하기" : `링크 ${index + 1}`}
+            </span>
+            {links.length > 1 && (
+              <span
+                className={`mt-0.5 block truncate text-[11px] font-normal ${
+                  index === 0 ? "text-paper/70" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </span>
+            )}
+          </span>
+          <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </a>
+      ))}
+    </div>
   );
 }
 

@@ -40,9 +40,17 @@ function htmlDecode(value) {
 function splitLinks(link) {
   if (!link) return [];
   return link
-    .split(/\s+\|\s+/)
+    .split(/\s*\|\s*/)
     .map((item) => item.trim())
     .filter((item) => item.startsWith("http://") || item.startsWith("https://"));
+}
+
+function getProjectLinks(project) {
+  const links = [
+    ...splitLinks(project.link),
+    ...(Array.isArray(project.links) ? project.links : []),
+  ];
+  return Array.from(new Set(links));
 }
 
 function normalizeUrl(value, baseUrl) {
@@ -502,7 +510,7 @@ async function collectPage(project, sourceUrl) {
 }
 
 async function collectForProject(project) {
-  const links = splitLinks(project.link);
+  const links = getProjectLinks(project);
   const candidates = [];
   const failures = [];
 
@@ -576,7 +584,9 @@ async function mapLimit(items, limit, mapper) {
 
 const projects = JSON.parse(await readFile(projectsPath, "utf8"));
 const missingImageProjects = projects.filter((project) => !project.imageUrl);
-const linkedProjects = missingImageProjects.filter((project) => splitLinks(project.link).length > 0);
+const linkedProjects = missingImageProjects.filter(
+  (project) => getProjectLinks(project).length > 0,
+);
 const results = await mapLimit(linkedProjects, concurrency, collectForProject);
 const candidates = results.filter((result) => result.imageUrl);
 const unresolved = results.filter((result) => !result.imageUrl);

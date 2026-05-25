@@ -67,7 +67,8 @@ function validateProject(project, index) {
     errors.push(`${label}.generation must be a positive integer.`);
   }
 
-  validateOptionalString(project.link, `${label}.link`);
+  validateOptionalLinks(project.link, `${label}.link`);
+  validateOptionalLinkArray(project.links, `${label}.links`);
   validateOptionalString(project.imageUrl, `${label}.imageUrl`);
   validateOptionalString(project.createdAt, `${label}.createdAt`);
 
@@ -97,5 +98,50 @@ function validateRequiredString(value, field) {
 function validateOptionalString(value, field) {
   if (value !== undefined && value !== null && typeof value !== "string") {
     errors.push(`${field} must be a string when present.`);
+  }
+}
+
+function validateOptionalLinks(value, field) {
+  validateOptionalString(value, field);
+
+  if (typeof value !== "string" || value.trim() === "") {
+    return;
+  }
+
+  value
+    .split(/\s*\|\s*/)
+    .map((url) => url.trim())
+    .forEach((url, index) => validateHttpUrl(url, `${field}[${index}]`));
+}
+
+function validateOptionalLinkArray(value, field) {
+  if (value === undefined || value === null) {
+    return;
+  }
+
+  if (!Array.isArray(value)) {
+    errors.push(`${field} must be an array when present.`);
+    return;
+  }
+
+  value.forEach((url, index) => {
+    if (typeof url !== "string" || url.trim() === "") {
+      errors.push(`${field}[${index}] must be a non-empty string.`);
+      return;
+    }
+
+    validateHttpUrl(url, `${field}[${index}]`);
+  });
+}
+
+function validateHttpUrl(value, field) {
+  try {
+    const url = new URL(value);
+
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      errors.push(`${field} must be an http or https URL.`);
+    }
+  } catch {
+    errors.push(`${field} must be a valid URL.`);
   }
 }

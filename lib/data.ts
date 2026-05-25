@@ -7,6 +7,7 @@ export type Project = {
   id: string;
   title: string;
   link: string;
+  links: ProjectLink[];
   description: string;
   imageUrl: string;
   rank: boolean;
@@ -15,10 +16,16 @@ export type Project = {
   createdAt?: string;
 };
 
+export type ProjectLink = {
+  url: string;
+  label: string;
+};
+
 type RawProject = {
   id: string;
   title: string;
   link?: string;
+  links?: string[];
   description: string;
   imageUrl?: string;
   rank?: boolean | null;
@@ -28,10 +35,13 @@ type RawProject = {
 };
 
 function normalizeProject(project: RawProject): Project {
+  const links = parseProjectLinks([project.link, ...(project.links ?? [])]);
+
   const normalized: Project = {
     id: project.id,
     title: project.title,
-    link: project.link ?? "",
+    link: links[0]?.url ?? "",
+    links,
     description: project.description,
     imageUrl: project.imageUrl ?? "",
     rank: project.rank === true,
@@ -44,6 +54,32 @@ function normalizeProject(project: RawProject): Project {
   }
 
   return normalized;
+}
+
+function parseProjectLinks(linkValues: (string | undefined)[]): ProjectLink[] {
+  const seen = new Set<string>();
+
+  return linkValues
+    .flatMap((link) => link?.split(/\s*\|\s*/) ?? [])
+    .map((url) => url.trim())
+    .filter(Boolean)
+    .filter((url) => {
+      if (seen.has(url)) return false;
+      seen.add(url);
+      return true;
+    })
+    .map((url, index) => ({
+      url,
+      label: formatLinkLabel(url, index),
+    }));
+}
+
+function formatLinkLabel(url: string, index: number): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return `링크 ${index + 1}`;
+  }
 }
 
 const projects = (projectsData as RawProject[])

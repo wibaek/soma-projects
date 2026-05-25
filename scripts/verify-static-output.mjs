@@ -41,6 +41,11 @@ assertIncludes(
 );
 assertIncludes(
   homeHtml,
+  '<meta property="og:image"',
+  "Home page must contain an Open Graph image."
+);
+assertIncludes(
+  homeHtml,
   `<link rel="canonical" href="${siteUrl}">`,
   "Home page must contain the canonical URL."
 );
@@ -63,6 +68,29 @@ assertIncludes(
   '<meta name="description"',
   "Project page must contain a meta description."
 );
+assertIncludes(
+  sampleHtml,
+  '<meta name="twitter:image"',
+  "Project page must contain a Twitter image."
+);
+
+const multiLinkProject = projects.find(
+  (project) => getProjectLinks(project).length > 1
+);
+
+if (multiLinkProject) {
+  const multiLinkHtml = await readOutput(
+    path.join("projects", multiLinkProject.id, "index.html")
+  );
+
+  for (const link of getProjectLinks(multiLinkProject)) {
+    assertIncludes(
+      multiLinkHtml,
+      escapeHtml(link),
+      "Project page must render every configured project link."
+    );
+  }
+}
 
 const sitemap = await readOutput("sitemap.xml");
 const sitemapUrls = sitemap.match(/<loc>/g)?.length ?? 0;
@@ -114,4 +142,22 @@ function escapeHtml(value) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
+}
+
+function getProjectLinks(project) {
+  return Array.from(
+    new Set([
+      ...splitLinks(project.link),
+      ...(Array.isArray(project.links) ? project.links : []),
+    ])
+  );
+}
+
+function splitLinks(link) {
+  if (!link) return [];
+
+  return link
+    .split(/\s*\|\s*/)
+    .map((url) => url.trim())
+    .filter(Boolean);
 }

@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: deploy-${{ github.repository }}-prod-cloudflare-pages
+  group: deploy-${{ github.repository }}-production-cloudflare-pages
   cancel-in-progress: false
 
 env:
@@ -27,7 +27,7 @@ jobs:
     timeout-minutes: 20
 
     environment:
-      name: prod
+      name: Production
       url: https://swmaestroproject.org
 
     steps:

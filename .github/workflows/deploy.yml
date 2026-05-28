@@ -1,0 +1,111 @@
+name: Cloudflare Pages Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.repository }}-prod-cloudflare-pages
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: "22"
+  PNPM_VERSION: "10"
+  PROJECT_NAME: soma-projects
+  PAGES_DIRECTORY: out
+  DEPLOY_BRANCH: ${{ github.ref_name }}
+
+jobs:
+  deploy:
+    name: Cloudflare Pages Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    environment:
+      name: prod
+      url: https://swmaestroproject.org
+
+    steps:
+      - name: 코드 체크아웃
+        uses: actions/checkout@v6
+
+      - name: private data submodule SSH 설정
+        env:
+          SOMA_PROJECTS_DATA_DEPLOY_KEY: ${{ secrets.SOMA_PROJECTS_DATA_DEPLOY_KEY }}
+          SOMA_PROJECTS_DATA_DEPLOY_KEY_B64: ${{ secrets.SOMA_PROJECTS_DATA_DEPLOY_KEY_B64 }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${SOMA_PROJECTS_DATA_DEPLOY_KEY:-}" ] && [ -z "${SOMA_PROJECTS_DATA_DEPLOY_KEY_B64:-}" ]; then
+            echo "SOMA_PROJECTS_DATA_DEPLOY_KEY 또는 SOMA_PROJECTS_DATA_DEPLOY_KEY_B64 secret이 필요합니다."
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          if [ -n "${SOMA_PROJECTS_DATA_DEPLOY_KEY_B64:-}" ]; then
+            printf '%s' "$SOMA_PROJECTS_DATA_DEPLOY_KEY_B64" | base64 -d > ~/.ssh/soma_projects_data_deploy_key
+          else
+            printf '%s\n' "$SOMA_PROJECTS_DATA_DEPLOY_KEY" > ~/.ssh/soma_projects_data_deploy_key
+          fi
+
+          chmod 600 ~/.ssh/soma_projects_data_deploy_key
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+          git config --global url."git@github.com:".insteadOf "https://github.com/"
+          git config --global core.sshCommand "ssh -i ~/.ssh/soma_projects_data_deploy_key -o IdentitiesOnly=yes"
+
+      - name: data submodule 체크아웃
+        run: |
+          set -euo pipefail
+          git submodule sync --recursive
+          git submodule update --init --recursive
+
+      - name: Node 설정
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: pnpm 준비
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare "pnpm@${PNPM_VERSION}" --activate
+
+      - name: 의존성 설치
+        run: pnpm install --frozen-lockfile
+
+      - name: 빌드 실행
+        run: pnpm build
+
+      - name: Cloudflare Pages 배포
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then
+            echo "CLOUDFLARE_API_TOKEN secret이 필요합니다."
+            exit 1
+          fi
+
+          if [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
+            echo "CLOUDFLARE_ACCOUNT_ID variable이 필요합니다."
+            exit 1
+          fi
+
+          if [ ! -d "$PAGES_DIRECTORY" ]; then
+            echo "pages directory를 찾을 수 없습니다: $PAGES_DIRECTORY"
+            exit 1
+          fi
+
+          pnpm dlx wrangler@4 pages deploy "$PAGES_DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$DEPLOY_BRANCH"

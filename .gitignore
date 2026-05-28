@@ -8,6 +8,7 @@
 
 # temporary docs and research notes
 /docs/tmp/
+HANDOFF.md
 
 # private project data is provided by the data/ submodule
 /content/projects.json

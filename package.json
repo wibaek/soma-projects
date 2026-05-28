@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 3130",
+    "dev": "vite --host 0.0.0.0 --port 3110",
     "build": "node scripts/validate-project-data.mjs && vite build --ssr src/entry-server.tsx --outDir .ssg/server && vite build --outDir out --manifest && node scripts/generate-static.mjs && node scripts/verify-static-output.mjs",
     "typecheck": "node scripts/validate-project-data.mjs && tsc --noEmit",
     "validate:data": "node scripts/validate-project-data.mjs",

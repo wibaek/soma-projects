@@ -46,14 +46,13 @@ const config: Config = {
         sans: [
           "Pretendard Variable",
           "Pretendard",
-          "var(--font-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           "system-ui",
           "sans-serif",
         ],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        serif: ["Georgia", "serif"],
+        mono: ["ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

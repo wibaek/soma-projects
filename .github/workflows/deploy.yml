@@ -106,6 +106,6 @@ jobs:
             exit 1
           fi
 
-          pnpm dlx wrangler@4 pages deploy "$PAGES_DIRECTORY" \
+          pnpm exec wrangler pages deploy "$PAGES_DIRECTORY" \
             --project-name="$PROJECT_NAME" \
             --branch="$DEPLOY_BRANCH"

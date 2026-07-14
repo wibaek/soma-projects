@@ -65,7 +65,7 @@ D1의 `project_submission` 테이블에 `pending` 상태로 저장합니다.
 
 Cloudflare에서 최초 한 번 다음 구성이 필요합니다.
 
-1. `soma-projects` 이름으로 D1 데이터베이스를 생성합니다.
+1. `wrangler.remote.jsonc`에 연결된 `soma-projects` D1 데이터베이스를 사용합니다.
 2. Pages 프로젝트의 Production과 Preview 환경에 D1 binding `SUBMISSION_DB`를 연결합니다.
 3. Pages 프로젝트에 secret `TURNSTILE_SECRET_KEY`를 등록합니다.
 4. Production 런타임 변수 `TURNSTILE_EXPECTED_HOSTNAME=swmaestroproject.org`를 등록합니다.
@@ -73,9 +73,11 @@ Cloudflare에서 최초 한 번 다음 구성이 필요합니다.
 6. D1 migration을 적용한 뒤 Pages 프로젝트를 다시 배포합니다.
 
 ```bash
-pnpm wrangler d1 create soma-projects
 pnpm d1:migrate:remote
 ```
+
+현재 원격 D1 데이터베이스 ID는 `wrangler.remote.jsonc`에 저장되어 있습니다.
+데이터베이스를 새로 만드는 경우에만 파일의 `database_id`를 새 ID로 변경합니다.
 
 대기 중인 등록 요청은 관리자 화면 없이 Wrangler로 확인할 수 있습니다.
 
@@ -87,6 +89,7 @@ pnpm d1:queue
 
 ```bash
 pnpm wrangler d1 execute soma-projects --remote \
+  --config wrangler.remote.jsonc \
   --command "SELECT * FROM project_submission WHERE id = 'sub_...'"
 ```
 

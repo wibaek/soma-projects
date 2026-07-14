@@ -34,6 +34,15 @@ async function getDevPageDataFromLocation(): Promise<PageData> {
     /^\/projects\/([^/]+)\/?$/
   );
 
+  if (
+    window.location.pathname === "/submit" ||
+    window.location.pathname === "/submit/"
+  ) {
+    return {
+      page: "submit-project",
+    };
+  }
+
   if (projectMatch) {
     const project = getProjectById(projectMatch[1]);
 

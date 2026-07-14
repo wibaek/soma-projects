@@ -18,6 +18,7 @@ await assertFile("index.html");
 await assertFile("404.html");
 await assertFile("sitemap.xml");
 await assertFile("robots.txt");
+await assertFile(path.join("submit", "index.html"));
 
 for (const project of projects) {
   await assertFile(path.join("projects", project.id, "index.html"));
@@ -48,6 +49,28 @@ assertIncludes(
   homeHtml,
   `<link rel="canonical" href="${siteUrl}">`,
   "Home page must contain the canonical URL."
+);
+assertIncludes(
+  homeHtml,
+  'href="/submit/"',
+  "Home page must link to the project submission page."
+);
+
+const submitHtml = await readOutput(path.join("submit", "index.html"));
+assertIncludes(
+  submitHtml,
+  `<link rel="canonical" href="${siteUrl}/submit/">`,
+  "Submission page must contain the canonical URL."
+);
+assertIncludes(
+  submitHtml,
+  "만든 프로젝트를",
+  "Submission page must contain prerendered Korean content."
+);
+assertIncludes(
+  submitHtml,
+  'name="contactEmail"',
+  "Submission page must prerender the contact email field."
 );
 
 const sampleHtml = await readOutput(
@@ -95,8 +118,8 @@ if (multiLinkProject) {
 const sitemap = await readOutput("sitemap.xml");
 const sitemapUrls = sitemap.match(/<loc>/g)?.length ?? 0;
 assert(
-  sitemapUrls === projects.length + 1,
-  `Sitemap should contain ${projects.length + 1} URLs, found ${sitemapUrls}.`
+  sitemapUrls === projects.length + 2,
+  `Sitemap should contain ${projects.length + 2} URLs, found ${sitemapUrls}.`
 );
 assertIncludes(
   sitemap,
@@ -112,7 +135,7 @@ assertIncludes(
 );
 
 process.stdout.write(
-  `Static output verified: ${projects.length} project pages, sitemap, robots, SEO tags.\n`
+  `Static output verified: submission page, ${projects.length} project pages, sitemap, robots, SEO tags.\n`
 );
 
 async function assertFile(relativePath) {

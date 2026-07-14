@@ -3,6 +3,7 @@ import type { Project } from "@/lib/data";
 
 interface ProjectCardProps {
   project: Project;
+  preview?: boolean;
 }
 
 const PLAIN_TEXT_LIMIT = 110;
@@ -26,15 +27,12 @@ function plainPreview(markdown: string, title: string): string {
   return clean.slice(0, PLAIN_TEXT_LIMIT).replace(/\s+\S*$/, "") + "…";
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
-  const preview = plainPreview(project.description, project.title);
+export function ProjectCard({ project, preview = false }: ProjectCardProps) {
+  const previewText = plainPreview(project.description, project.title);
   const hasImage = Boolean(project.imageUrl);
 
-  return (
-    <a
-      href={`/projects/${project.id}/`}
-      className="card-hover group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card"
-    >
+  const content = (
+    <>
       <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-border bg-subtle">
         {hasImage ? (
           <img
@@ -68,19 +66,38 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.title}
         </h3>
 
-        {preview && (
+        {previewText && (
           <p className="mt-2 line-clamp-2 text-[13.5px] leading-relaxed text-muted-foreground">
-            {preview}
+            {previewText}
           </p>
         )}
 
         <div className="mt-auto flex items-center justify-between pt-5">
           <span className="text-[12px] font-medium text-muted-foreground transition-colors group-hover:text-ink-deep">
-            자세히 보기
+            {preview ? "등록 후 공개됩니다" : "자세히 보기"}
           </span>
-          <ArrowUpRight className="arrow-mover h-3.5 w-3.5 text-muted-foreground group-hover:text-ink-deep" />
+          {!preview && (
+            <ArrowUpRight className="arrow-mover h-3.5 w-3.5 text-muted-foreground group-hover:text-ink-deep" />
+          )}
         </div>
       </div>
+    </>
+  );
+
+  if (preview) {
+    return (
+      <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card">
+        {content}
+      </article>
+    );
+  }
+
+  return (
+    <a
+      href={`/projects/${project.id}/`}
+      className="card-hover group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card"
+    >
+      {content}
     </a>
   );
 }

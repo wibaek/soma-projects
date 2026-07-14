@@ -82,7 +82,17 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 빌드 실행
-        run: pnpm build
+        env:
+          VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${VITE_TURNSTILE_SITE_KEY:-}" ]; then
+            echo "VITE_TURNSTILE_SITE_KEY repository variable이 필요합니다."
+            exit 1
+          fi
+
+          pnpm build
 
       - name: Cloudflare Pages 배포
         env:

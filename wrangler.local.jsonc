@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "d1_databases": [
+    {
+      "binding": "SUBMISSION_DB",
+      "database_name": "soma-projects",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "preview_database_id": "SUBMISSION_DB",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

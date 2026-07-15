@@ -2,6 +2,7 @@ import { SiteLayout } from "@/src/layout/SiteLayout";
 import { HomePage } from "@/src/pages/HomePage";
 import { NotFoundPage } from "@/src/pages/NotFoundPage";
 import { ProjectDetailPage } from "@/src/pages/ProjectDetailPage";
+import { SubmitProjectPage } from "@/src/pages/SubmitProjectPage";
 import type { Project } from "@/lib/data";
 
 export type HomePageData = {
@@ -20,7 +21,15 @@ export type NotFoundPageData = {
   page: "not-found";
 };
 
-export type PageData = HomePageData | ProjectPageData | NotFoundPageData;
+export type SubmitProjectPageData = {
+  page: "submit-project";
+};
+
+export type PageData =
+  | HomePageData
+  | ProjectPageData
+  | SubmitProjectPageData
+  | NotFoundPageData;
 
 export function App({ pageData }: { pageData: PageData }) {
   return (
@@ -35,6 +44,7 @@ export function App({ pageData }: { pageData: PageData }) {
       {pageData.page === "project" && (
         <ProjectDetailPage project={pageData.project} />
       )}
+      {pageData.page === "submit-project" && <SubmitProjectPage />}
       {pageData.page === "not-found" && <NotFoundPage />}
     </SiteLayout>
   );

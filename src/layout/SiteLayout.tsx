@@ -13,7 +13,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
             SOMA Projects
           </a>
 
-          <nav className="flex items-center gap-5 text-[13.5px] text-muted-foreground">
+          <nav className="flex items-center gap-4 text-[13.5px] text-muted-foreground sm:gap-5">
             <a
               href="https://www.swmaestro.org/sw/singl/projectIntc/list.do?menuNo=200013"
               target="_blank"
@@ -31,12 +31,10 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
               GitHub
             </a>
             <a
-              href="https://open.kakao.com/o/sFa5F6rh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground transition-colors hover:text-brand"
+              href="/submit/"
+              className="inline-flex h-8 items-center rounded-md bg-ink px-3 text-[12.5px] font-medium text-paper transition-colors hover:bg-ink-deep"
             >
-              문의하기
+              프로젝트 등록
             </a>
           </nav>
         </div>
@@ -66,6 +64,14 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
                   className="transition-colors hover:text-foreground"
                 >
                   SW마에스트로
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/submit/"
+                  className="transition-colors hover:text-foreground"
+                >
+                  프로젝트 등록
                 </a>
               </li>
               <li>

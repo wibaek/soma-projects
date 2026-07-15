@@ -53,6 +53,57 @@ git submodule update --init --recursive
 pnpm dev
 ```
 
+프로젝트 등록 화면은 `/submit/`에서 확인할 수 있습니다. 로컬 Turnstile 테스트
+키를 사용하려면 `.env.example`을 `.env`로, `.dev.vars.example`을 `.dev.vars`로
+복사합니다. `.dev.vars`에는 실제 운영 secret을 저장하거나 커밋하지 않습니다.
+
+## 17기 프로젝트 등록
+
+등록 요청은 공개 데이터나 Git 저장소에 바로 반영되지 않습니다. Pages Function의
+`POST /api/v1/project-submissions`가 서버에서 입력과 Turnstile 토큰을 검증한 뒤,
+D1의 `project_submission` 테이블에 `pending` 상태로 저장합니다.
+
+Cloudflare에서 최초 한 번 다음 구성이 필요합니다.
+
+1. `wrangler.remote.jsonc`에 연결된 `soma-projects` D1 데이터베이스를 사용합니다.
+2. Pages 프로젝트의 Production과 Preview 환경에 D1 binding `SUBMISSION_DB`를 연결합니다.
+3. Pages 프로젝트에 secret `TURNSTILE_SECRET_KEY`를 등록합니다.
+4. Production 런타임 변수 `TURNSTILE_EXPECTED_HOSTNAME=swmaestroproject.org`를 등록합니다.
+5. GitHub Actions repository variable `VITE_TURNSTILE_SITE_KEY`에 Turnstile site key를 등록합니다.
+6. D1 migration을 적용한 뒤 Pages 프로젝트를 다시 배포합니다.
+
+```bash
+pnpm d1:migrate:remote
+```
+
+현재 원격 D1 데이터베이스 ID는 `wrangler.remote.jsonc`에 저장되어 있습니다.
+데이터베이스를 새로 만드는 경우에만 파일의 `database_id`를 새 ID로 변경합니다.
+
+대기 중인 등록 요청은 관리자 화면 없이 Wrangler로 확인할 수 있습니다.
+
+```bash
+pnpm d1:queue
+```
+
+상세 내용을 확인할 때는 접수 번호를 사용합니다.
+
+```bash
+pnpm wrangler d1 execute soma-projects --remote \
+  --config wrangler.remote.jsonc \
+  --command "SELECT * FROM project_submission WHERE id = 'sub_...'"
+```
+
+현재 등록 폼의 필수 항목은 프로젝트 이름, 한 줄 소개, 자세한 소개, 분야,
+대표 링크, 검수용 이메일, 공개 동의입니다. 기수는 서버에서 17기로 고정하며,
+연락처는 공개 프로젝트 데이터에 포함하지 않습니다.
+
+로컬 D1 migration 검증은 운영 데이터베이스 ID와 무관한
+`wrangler.local.jsonc`를 사용합니다.
+
+```bash
+pnpm d1:migrate:local
+```
+
 ## 정적 빌드
 
 ```bash
@@ -66,7 +117,10 @@ Cloudflare Pages 설정:
 
 - Build command: `pnpm build`
 - Build output directory: `out`
-- Environment variables: 없음
+- D1 binding: `SUBMISSION_DB`
+- Runtime secret: `TURNSTILE_SECRET_KEY`
+- Production runtime variable: `TURNSTILE_EXPECTED_HOSTNAME=swmaestroproject.org`
+- GitHub Actions repository variable: `VITE_TURNSTILE_SITE_KEY`
 
 ## 검증
 
@@ -76,4 +130,5 @@ pnpm typecheck
 pnpm build
 ```
 
-빌드 후 `out/index.html`, `out/projects/<project-id>/index.html`, `out/sitemap.xml`, `out/robots.txt`, `out/404.html`이 생성되어야 합니다.
+빌드 후 `out/index.html`, `out/submit/index.html`, `out/projects/<project-id>/index.html`,
+`out/sitemap.xml`, `out/robots.txt`, `out/404.html`이 생성되어야 합니다.

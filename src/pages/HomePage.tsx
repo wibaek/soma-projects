@@ -1,4 +1,5 @@
 import { ProjectBrowser } from "@/components/project-browser";
+import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/data";
 
 type HomePageProps = {
@@ -30,6 +31,24 @@ export function HomePage({
             모든 프로젝트를 한 곳에서. 기수별·분야별로 탐색하고 우수
             프로젝트를 발견해보세요.
           </p>
+
+          <a
+            href="/submit/"
+            className="group mt-8 inline-flex items-center gap-4 rounded-lg border border-brand/20 bg-brand-soft/55 px-4 py-3 transition-colors hover:border-brand/35 hover:bg-brand-soft"
+          >
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand text-[11px] font-semibold text-paper">
+              17기
+            </span>
+            <span className="text-left">
+              <span className="block text-[13.5px] font-semibold text-ink-deep">
+                프로젝트를 아카이브에 남겨주세요
+              </span>
+              <span className="mt-0.5 block text-[11.5px] text-muted-foreground">
+                약 3분 · 공개 전 검수
+              </span>
+            </span>
+            <ArrowRight className="ml-1 h-4 w-4 text-brand transition-transform group-hover:translate-x-0.5" />
+          </a>
 
           <dl className="mt-12 grid max-w-2xl grid-cols-3 border-t border-border">
             <Stat label="총 프로젝트" value={projects.length} />

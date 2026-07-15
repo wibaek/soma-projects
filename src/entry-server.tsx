@@ -53,6 +53,21 @@ export function getStaticRoutes(): StaticRoute[] {
       },
       includeInSitemap: true,
     },
+    {
+      path: "/submit/",
+      data: {
+        page: "submit-project",
+      },
+      meta: {
+        title: "17기 프로젝트 등록 - SOMA Projects",
+        description:
+          "소프트웨어 마에스트로 17기 프로젝트를 SOMA Projects 아카이브에 등록 요청하세요.",
+        path: "/submit/",
+        image: DEFAULT_OG_IMAGE,
+        type: "website",
+      },
+      includeInSitemap: true,
+    },
   ];
 
   for (const project of projects) {
@@ -95,6 +110,10 @@ export function getStaticRoutes(): StaticRoute[] {
 export function getRouteByPath(path: string): StaticRoute | null {
   if (path === "/") {
     return getStaticRoutes()[0] ?? null;
+  }
+
+  if (path === "/submit" || path === "/submit/") {
+    return getStaticRoutes().find((route) => route.path === "/submit/") ?? null;
   }
 
   const projectMatch = path.match(/^\/projects\/([^/]+)\/?$/);

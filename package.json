@@ -7,7 +7,10 @@
     "build": "node scripts/validate-project-data.mjs && vite build --ssr src/entry-server.tsx --outDir .ssg/server && vite build --outDir out --manifest && node scripts/generate-static.mjs && node scripts/verify-static-output.mjs",
     "typecheck": "node scripts/validate-project-data.mjs && tsc --noEmit",
     "validate:data": "node scripts/validate-project-data.mjs",
-    "verify:static": "node scripts/verify-static-output.mjs"
+    "verify:static": "node scripts/verify-static-output.mjs",
+    "d1:migrate:local": "wrangler d1 migrations apply soma-projects --local --config wrangler.local.jsonc",
+    "d1:migrate:remote": "wrangler d1 migrations apply soma-projects --remote --config wrangler.remote.jsonc",
+    "d1:queue": "wrangler d1 execute soma-projects --remote --config wrangler.remote.jsonc --command \"SELECT id, title, project_type, contact_email, status, created_at FROM project_submission WHERE status = 'pending' ORDER BY created_at ASC\""
   },
   "dependencies": {
     "lucide-react": "^0.454.0",

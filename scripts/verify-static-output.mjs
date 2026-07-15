@@ -69,8 +69,12 @@ assertIncludes(
 );
 assertIncludes(
   submitHtml,
-  'name="contactEmail"',
-  "Submission page must prerender the contact email field."
+  "프로젝트 정보 보내기",
+  "Submission page must prerender the submission action."
+);
+assert(
+  !submitHtml.includes('name="contactEmail"'),
+  "Submission page must not collect a contact email."
 );
 
 const sampleHtml = await readOutput(

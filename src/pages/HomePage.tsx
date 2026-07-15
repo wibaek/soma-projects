@@ -44,7 +44,7 @@ export function HomePage({
                 프로젝트를 아카이브에 남겨주세요
               </span>
               <span className="mt-0.5 block text-[11.5px] text-muted-foreground">
-                약 3분 · 공개 전 검수
+                약 3분
               </span>
             </span>
             <ArrowRight className="ml-1 h-4 w-4 text-brand transition-transform group-hover:translate-x-0.5" />

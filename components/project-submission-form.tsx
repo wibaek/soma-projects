@@ -5,7 +5,6 @@ import {
   Check,
   CircleAlert,
   ExternalLink,
-  LockKeyhole,
   Plus,
 } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
@@ -34,8 +33,6 @@ type FormValues = {
   primaryLink: string;
   additionalLink: string;
   imageUrl: string;
-  contactEmail: string;
-  consent: boolean;
 };
 
 const INITIAL_VALUES: FormValues = {
@@ -46,8 +43,6 @@ const INITIAL_VALUES: FormValues = {
   primaryLink: "",
   additionalLink: "",
   imageUrl: "",
-  contactEmail: "",
-  consent: false,
 };
 
 type SubmissionState =
@@ -128,14 +123,6 @@ export function ProjectSubmissionForm() {
       return;
     }
 
-    if (!values.consent) {
-      setFieldErrors((current) => ({
-        ...current,
-        consent: "프로젝트 정보 공개 동의가 필요합니다.",
-      }));
-      return;
-    }
-
     const payload: ProjectSubmissionRequest = {
       title: values.title.trim(),
       summary: values.summary.trim(),
@@ -144,8 +131,6 @@ export function ProjectSubmissionForm() {
       links: [values.primaryLink, values.additionalLink]
         .map((link) => link.trim())
         .filter(Boolean),
-      contactEmail: values.contactEmail.trim(),
-      consent: true,
       turnstileToken,
     };
 
@@ -216,14 +201,13 @@ export function ProjectSubmissionForm() {
               name="title"
               type="text"
               required
-              minLength={PROJECT_SUBMISSION_LIMITS.title.min}
               maxLength={PROJECT_SUBMISSION_LIMITS.title.max}
               autoComplete="off"
               value={values.title}
               onChange={(event) => updateValue("title", event.target.value)}
               aria-invalid={Boolean(fieldErrors.title)}
               aria-describedby={fieldErrors.title ? "title-error" : undefined}
-              placeholder="예: AISC - AI 활용능력평가"
+              placeholder="예: 교환닷컴 - 교환학생 정보 플랫폼"
               className={inputClassName(fieldErrors.title)}
             />
           </Field>
@@ -240,7 +224,6 @@ export function ProjectSubmissionForm() {
               name="summary"
               type="text"
               required
-              minLength={PROJECT_SUBMISSION_LIMITS.summary.min}
               maxLength={PROJECT_SUBMISSION_LIMITS.summary.max}
               value={values.summary}
               onChange={(event) => updateValue("summary", event.target.value)}
@@ -284,13 +267,12 @@ export function ProjectSubmissionForm() {
             required
             hint={`${values.description.length}/${PROJECT_SUBMISSION_LIMITS.description.max}`}
             error={fieldErrors.description}
-            description="README나 기존 소개 글을 그대로 붙여 넣어도 괜찮아요. Markdown을 지원합니다."
+            description="README나 기존 소개 글을 그대로 붙여 넣어도 괜찮아요."
           >
             <textarea
               id="description"
               name="description"
               required
-              minLength={PROJECT_SUBMISSION_LIMITS.description.min}
               maxLength={PROJECT_SUBMISSION_LIMITS.description.max}
               rows={9}
               value={values.description}
@@ -378,7 +360,7 @@ export function ProjectSubmissionForm() {
             label="대표 이미지 URL"
             name="imageUrl"
             error={fieldErrors.imageUrl}
-            description="비워두면 검수 과정에서 프로젝트 링크를 참고해 대표 이미지를 찾아볼게요."
+            description="비워두면 프로젝트 링크를 참고해 대표 이미지를 찾아볼게요."
           >
             <input
               id="imageUrl"
@@ -399,70 +381,7 @@ export function ProjectSubmissionForm() {
           </Field>
         </FormSection>
 
-        <FormSection
-          number="03"
-          title="제출 확인"
-          description="검수 중 확인이 필요할 때만 연락드려요. 연락처는 공개되지 않습니다."
-        >
-          <Field
-            label="연락받을 이메일"
-            name="contactEmail"
-            required
-            error={fieldErrors.contactEmail}
-          >
-            <div className="relative">
-              <LockKeyhole className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                id="contactEmail"
-                name="contactEmail"
-                type="email"
-                required
-                maxLength={PROJECT_SUBMISSION_LIMITS.contactEmail.max}
-                autoComplete="email"
-                value={values.contactEmail}
-                onChange={(event) =>
-                  updateValue("contactEmail", event.target.value)
-                }
-                aria-invalid={Boolean(fieldErrors.contactEmail)}
-                aria-describedby={
-                  fieldErrors.contactEmail ? "contactEmail-error" : undefined
-                }
-                placeholder="name@example.com"
-                className={`${inputClassName(fieldErrors.contactEmail)} pl-10`}
-              />
-            </div>
-          </Field>
-
-          <label
-            className={`flex cursor-pointer items-start gap-3 rounded-lg border p-4 text-[13.5px] leading-relaxed transition-colors ${
-              fieldErrors.consent
-                ? "border-destructive/50 bg-destructive/5"
-                : values.consent
-                  ? "border-brand/35 bg-brand-soft/50"
-                  : "border-border bg-background hover:bg-subtle"
-            }`}
-          >
-            <input
-              type="checkbox"
-              name="consent"
-              required
-              checked={values.consent}
-              onChange={(event) =>
-                updateValue("consent", event.target.checked)
-              }
-              className="mt-0.5 h-4 w-4 rounded border-border text-brand focus:ring-brand/30"
-            />
-            <span>
-              본인이 이 프로젝트의 구성원이거나 등록 권한이 있으며, 입력한 정보와
-              이미지가 SOMA Projects에 공개되는 것에 동의합니다.
-            </span>
-          </label>
-          {fieldErrors.consent && (
-            <p id="consent-error" className="text-[12px] text-destructive">
-              {fieldErrors.consent}
-            </p>
-          )}
-
+        <section className="space-y-4 border-t border-border pt-7 sm:pl-8">
           {TURNSTILE_SITE_KEY ? (
             <div>
               <TurnstileWidget
@@ -498,17 +417,12 @@ export function ProjectSubmissionForm() {
             disabled={isSubmitting || !TURNSTILE_SITE_KEY}
             className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-ink px-5 text-[14px] font-semibold text-paper transition-colors hover:bg-ink-deep disabled:cursor-not-allowed disabled:opacity-55"
           >
-            {isSubmitting ? "등록 요청을 보내는 중…" : "검토 요청하기"}
+            {isSubmitting ? "프로젝트 정보를 보내는 중…" : "프로젝트 정보 보내기"}
             {!isSubmitting && (
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             )}
           </button>
-
-          <p className="text-center text-[12px] leading-relaxed text-muted-foreground">
-            제출 즉시 공개되지 않으며, 검토가 끝난 프로젝트만 아카이브에
-            반영됩니다.
-          </p>
-        </FormSection>
+        </section>
       </form>
 
       <aside className="hidden lg:block">
@@ -523,8 +437,7 @@ export function ProjectSubmissionForm() {
           </div>
           <ProjectCard project={previewProject} preview />
           <p className="mt-4 text-[12px] leading-relaxed text-muted-foreground">
-            최종 공개 전 검수 과정에서 문장과 대표 이미지가 조금 다듬어질 수
-            있어요.
+            보내주신 내용은 아카이브 형식에 맞게 조금 다듬어질 수 있어요.
           </p>
         </div>
       </aside>
@@ -634,8 +547,7 @@ function SubmissionComplete({
         프로젝트를 잘 받았어요
       </h2>
       <p className="mx-auto mt-4 max-w-md text-[14px] leading-relaxed text-muted-foreground">
-        내용을 확인한 뒤 아카이브 반영 여부를 검토할게요. 추가 확인이 필요한
-        경우 입력한 이메일로 연락드립니다.
+        보내주신 내용을 확인한 뒤 아카이브 형식에 맞게 정리할게요.
       </p>
       <div className="mx-auto mt-7 max-w-sm rounded-lg border border-border bg-subtle px-4 py-3">
         <span className="text-[11px] text-muted-foreground">접수 번호</span>

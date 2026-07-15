@@ -3,12 +3,11 @@ export const PROJECT_SUBMISSION_TYPES = ["App", "Web", "기타"] as const;
 export const TURNSTILE_ACTION = "project_submission";
 
 export const PROJECT_SUBMISSION_LIMITS = {
-  title: { min: 2, max: 100 },
-  summary: { min: 10, max: 160 },
-  description: { min: 20, max: 5000 },
+  title: { max: 100 },
+  summary: { max: 160 },
+  description: { max: 5000 },
   links: { min: 1, max: 5 },
   url: { max: 2048 },
-  contactEmail: { max: 254 },
   turnstileToken: { max: 2048 },
 } as const;
 
@@ -22,8 +21,6 @@ export type ProjectSubmissionRequest = {
   type: ProjectSubmissionType;
   links: string[];
   imageUrl?: string;
-  contactEmail: string;
-  consent: true;
   turnstileToken: string;
 };
 

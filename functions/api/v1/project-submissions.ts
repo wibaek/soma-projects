@@ -41,7 +41,7 @@ type TurnstileResponse = {
 
 type ValidatedSubmission = Omit<
   ProjectSubmissionRequest,
-  "consent" | "turnstileToken"
+  "turnstileToken"
 > & {
   imageUrl: string;
   turnstileToken: string;
@@ -56,7 +56,6 @@ type TurnstileResult =
   | { ok: false; unavailable: boolean };
 
 const MAX_REQUEST_BYTES = 32 * 1024;
-const CONSENT_VERSION = "2026-07-14";
 const PROBLEM_BASE_URL = "https://swmaestroproject.org/problems";
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
@@ -198,13 +197,10 @@ export const onRequest: PagesFunction = async ({ request, env }) => {
         project_type,
         links_json,
         image_url,
-        contact_email,
         status,
-        consent_version,
-        consented_at,
         created_at,
         updated_at
-      ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, 'pending', ?10, ?11, ?12, ?13)`
+      ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, 'pending', ?9, ?10)`
     )
       .bind(
         submissionId,
@@ -215,9 +211,6 @@ export const onRequest: PagesFunction = async ({ request, env }) => {
         submission.type,
         JSON.stringify(submission.links),
         submission.imageUrl || null,
-        submission.contactEmail,
-        CONSENT_VERSION,
-        submittedAt,
         submittedAt,
         submittedAt
       )
@@ -289,18 +282,10 @@ function validateSubmission(value: unknown): ValidationResult {
   const type = validateProjectType(value.type, violations);
   const links = validateLinks(value.links, violations);
   const imageUrl = validateOptionalUrl(value.imageUrl, "imageUrl", violations);
-  const contactEmail = validateEmail(value.contactEmail, violations);
   const turnstileToken = validateTurnstileToken(
     value.turnstileToken,
     violations
   );
-
-  if (value.consent !== true) {
-    violations.push({
-      field: "consent",
-      reason: "프로젝트 정보 공개 동의가 필요합니다.",
-    });
-  }
 
   if (violations.length > 0) {
     return { ok: false, violations };
@@ -315,7 +300,6 @@ function validateSubmission(value: unknown): ValidationResult {
       type,
       links,
       imageUrl,
-      contactEmail,
       turnstileToken,
     },
   };
@@ -325,7 +309,7 @@ function validateText(
   value: unknown,
   field: string,
   label: string,
-  limits: { min: number; max: number },
+  limits: { max: number },
   violations: ProblemViolation[]
 ): string {
   if (typeof value !== "string") {
@@ -335,10 +319,10 @@ function validateText(
 
   const normalized = value.trim();
 
-  if (normalized.length < limits.min) {
+  if (normalized.length === 0) {
     violations.push({
       field,
-      reason: `${label}은 ${limits.min}자 이상 입력해주세요.`,
+      reason: `${label}을 입력해주세요.`,
     });
   } else if (normalized.length > limits.max) {
     violations.push({
@@ -431,35 +415,6 @@ function validateOptionalUrl(
   }
 
   return value.trim();
-}
-
-function validateEmail(
-  value: unknown,
-  violations: ProblemViolation[]
-): string {
-  if (typeof value !== "string") {
-    violations.push({
-      field: "contactEmail",
-      reason: "연락받을 이메일을 입력해주세요.",
-    });
-    return "";
-  }
-
-  const normalized = value.trim().toLowerCase();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (
-    normalized.length === 0 ||
-    normalized.length > PROJECT_SUBMISSION_LIMITS.contactEmail.max ||
-    !emailPattern.test(normalized)
-  ) {
-    violations.push({
-      field: "contactEmail",
-      reason: "올바른 이메일 주소를 입력해주세요.",
-    });
-  }
-
-  return normalized;
 }
 
 function validateTurnstileToken(

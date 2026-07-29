@@ -17,7 +17,11 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
 
   return (
     <main className="relative">
-      <section className="border-b border-border">
+      <section className="relative isolate overflow-hidden border-b border-border">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-dots opacity-40 mask-fade-b" />
+        </div>
+
         <div className="mx-auto max-w-6xl px-5 pt-10 sm:px-8 sm:pt-14">
           <a
             href="/"
@@ -27,7 +31,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
             프로젝트 목록으로
           </a>
 
-          <div className="mt-10 flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          <div className="reveal reveal-1 mt-10 flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
             <span className="font-mono normal-case tracking-tight">
               {project.generation}기
             </span>
@@ -40,7 +44,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
             {project.rank && (
               <>
                 <span className="text-border">/</span>
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 text-ink">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   우수 프로젝트
                 </span>
@@ -48,12 +52,12 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
             )}
           </div>
 
-          <h1 className="mt-5 max-w-4xl text-balance text-[clamp(1.875rem,4.2vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-ink-deep">
+          <h1 className="reveal reveal-2 mt-5 max-w-4xl text-balance text-[clamp(1.875rem,4.2vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-ink-deep">
             {project.title}
           </h1>
 
-          <div className="mt-10 pb-12 sm:pb-16">
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-border bg-subtle sm:aspect-[21/9]">
+          <div className="reveal reveal-3 mt-10 pb-12 sm:pb-16">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-border bg-subtle shadow-md sm:aspect-[21/9]">
               {hasImage ? (
                 <img
                   src={project.imageUrl}
@@ -62,8 +66,8 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center">
-                  <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                <div className="flex h-full w-full items-center justify-center bg-dots">
+                  <span className="rounded-full border border-border bg-paper/70 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
                     이미지가 등록되지 않은 프로젝트
                   </span>
                 </div>
@@ -85,14 +89,17 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
           </div>
 
           <aside className="md:col-span-4">
-            <div className="sticky top-20 space-y-6 rounded-xl border border-border bg-card p-6">
+            <div className="sticky top-20 space-y-6 rounded-xl border border-border bg-paper p-6 shadow-sm">
               <div>
                 <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                   프로젝트 정보
                 </p>
                 <dl className="mt-4 space-y-3.5 text-[14px]">
                   <Info label="기수">
-                    <span className="nums">{project.generation}</span>기
+                    <span className="font-display nums text-[15px]">
+                      {project.generation}
+                    </span>
+                    기
                   </Info>
                   <Info label="분야">{project.type || "미분류"}</Info>
                   {project.rank && (
@@ -128,6 +135,9 @@ function ProjectLinks({
 }) {
   return (
     <div className="space-y-2">
+      <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+        바로가기
+      </p>
       {links.map((link, index) => (
         <a
           key={`${link.url}-${index}`}
@@ -136,7 +146,7 @@ function ProjectLinks({
           rel="noopener noreferrer"
           className={`group flex w-full items-center justify-between gap-3 rounded-lg px-4 py-3 text-[14px] font-medium transition-colors ${
             index === 0
-              ? "bg-ink text-paper hover:bg-ink-deep"
+              ? "bg-ink text-paper shadow-sm hover:bg-ink-deep"
               : "border border-border bg-background text-foreground hover:bg-subtle"
           }`}
         >

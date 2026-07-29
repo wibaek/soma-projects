@@ -74,11 +74,11 @@ export function ProjectBrowser({
       />
 
       {filteredProjects.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-subtle/30 px-6 py-20 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-background">
+        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-dots px-6 py-24 text-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-paper shadow-xs">
             <SearchX className="h-5 w-5 text-muted-foreground" />
           </div>
-          <h3 className="mt-5 text-lg font-medium tracking-tight">
+          <h3 className="mt-5 text-lg font-semibold tracking-tight text-ink-deep">
             결과가 없어요
           </h3>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
@@ -88,7 +88,7 @@ export function ProjectBrowser({
             <button
               type="button"
               onClick={resetFilters}
-              className="mt-6 inline-flex h-9 items-center rounded-md border border-border bg-background px-4 text-[13px] font-medium transition-colors hover:bg-subtle"
+              className="mt-6 inline-flex h-9 items-center rounded-full border border-border bg-paper px-4 text-[13px] font-medium shadow-xs transition-colors hover:bg-subtle"
             >
               필터 초기화
             </button>
@@ -96,8 +96,8 @@ export function ProjectBrowser({
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+          {filteredProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       )}

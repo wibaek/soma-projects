@@ -31,13 +31,19 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <p className="my-4 text-pretty first:mt-0" {...props} />
           ),
           ul: ({ node, ...props }) => (
-            <ul className="my-4 list-disc space-y-1 pl-6" {...props} />
+            <ul
+              className="my-4 list-disc space-y-1.5 pl-5 marker:text-ink/30"
+              {...props}
+            />
           ),
           ol: ({ node, ...props }) => (
-            <ol className="my-4 list-decimal space-y-1 pl-6" {...props} />
+            <ol
+              className="my-4 list-decimal space-y-1.5 pl-5 marker:font-medium marker:text-muted-foreground"
+              {...props}
+            />
           ),
           li: ({ node, ...props }) => (
-            <li className="leading-[1.7]" {...props} />
+            <li className="pl-1 leading-[1.7]" {...props} />
           ),
           a: ({ node, ...props }) => (
             <a
@@ -49,7 +55,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           blockquote: ({ node, ...props }) => (
             <blockquote
-              className="my-6 border-l-2 border-brand/40 pl-5 italic text-foreground/75"
+              className="my-6 rounded-r-lg border-l-[3px] border-brand/50 bg-brand-soft/30 py-2 pl-5 pr-4 text-foreground/80"
               {...props}
             />
           ),
@@ -58,7 +64,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               <img
                 src={src || "/placeholder.svg"}
                 alt={alt || ""}
-                className="w-full rounded-xl border border-border"
+                className="w-full rounded-xl border border-border shadow-sm"
                 {...props}
               />
               {alt && (
@@ -76,7 +82,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           pre: ({ node, ...props }) => (
             <pre
-              className="my-5 overflow-x-auto rounded-xl border border-border bg-muted p-4 font-mono text-[13px]"
+              className="my-5 overflow-x-auto rounded-xl border border-border bg-muted p-4 font-mono text-[13px] shadow-xs"
               {...props}
             />
           ),

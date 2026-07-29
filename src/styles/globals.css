@@ -12,7 +12,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    /* A faintly cool paper so pure-white cards lift off the page */
+    --background: 210 40% 99.2%;
     --foreground: 218 55% 11%;
     --ink: 215 88% 19%;
     --ink-deep: 218 65% 9%;
@@ -31,7 +32,7 @@
     --secondary-foreground: 218 55% 11%;
 
     --muted: 215 20% 96%;
-    --muted-foreground: 215 13% 41%;
+    --muted-foreground: 215 14% 42%;
 
     --subtle: 215 22% 97%;
 
@@ -49,7 +50,16 @@
     --border: 215 22% 90%;
     --input: 215 22% 90%;
     --ring: 216 80% 34%;
-    --radius: 0.5rem;
+    --radius: 0.625rem;
+
+    /* Ink-tinted shadows read warmer and more designed than neutral gray */
+    --shadow-xs: 0 1px 2px hsl(218 45% 11% / 0.05);
+    --shadow-sm: 0 1px 2px hsl(218 45% 11% / 0.04),
+      0 2px 6px -2px hsl(218 45% 11% / 0.08);
+    --shadow-md: 0 2px 4px hsl(218 45% 11% / 0.04),
+      0 12px 28px -12px hsl(218 45% 11% / 0.16);
+    --shadow-lg: 0 4px 8px hsl(218 45% 11% / 0.05),
+      0 24px 48px -16px hsl(218 45% 11% / 0.22);
   }
 }
 
@@ -62,6 +72,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -69,9 +80,21 @@
     font-feature-settings: "ss01", "cv11", "cv02";
   }
 
+  /* Display serif tightens up and optical-sizes for headline use */
+  .font-display {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-optical-sizing: auto;
+    font-feature-settings: "lnum" 1;
+  }
+
   ::selection {
     background: hsl(var(--ink-deep));
     color: hsl(var(--paper));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 2px;
   }
 }
 
@@ -85,32 +108,128 @@
   }
 
   .nums {
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* A faint blueprint grid — depth without noise */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(215 40% 12% / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(215 40% 12% / 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(
+      hsl(215 40% 25% / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  /* Fades a texture toward the page edges so it never feels boxed-in */
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 0%,
+      black 40%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 0%,
+      black 40%,
+      transparent 100%
+    );
   }
 }
 
+/* ---- Motion ---------------------------------------------------------- */
+/* CSS-only staggered reveal on load. Content ends at full opacity, so it
+   stays visible even if styles/JS are slow — no FOUC, no hidden content. */
+
+.reveal {
+  opacity: 0;
+  animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-1 {
+  animation-delay: 0.05s;
+}
+.reveal-2 {
+  animation-delay: 0.12s;
+}
+.reveal-3 {
+  animation-delay: 0.19s;
+}
+.reveal-4 {
+  animation-delay: 0.26s;
+}
+.reveal-5 {
+  animation-delay: 0.33s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-1,
+  .reveal-2,
+  .reveal-3,
+  .reveal-4,
+  .reveal-5 {
+    animation: none;
+    opacity: 1;
+  }
+  .card-hover,
+  .card-hover .card-image,
+  .card-hover .arrow-mover {
+    transition: none;
+  }
+}
+
+/* ---- Card interactions ----------------------------------------------- */
+
 .card-hover {
   transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-hover:hover {
-  border-color: hsl(var(--ink-deep));
+  border-color: hsl(215 30% 78%);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 .card-hover .card-image {
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .card-hover:hover .card-image {
-  transform: scale(1.025);
+  transform: scale(1.04);
 }
 
 .card-hover .arrow-mover {
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
 .card-hover:hover .arrow-mover {
-  transform: translate(2px, -2px);
+  transform: translate(3px, -3px);
 }

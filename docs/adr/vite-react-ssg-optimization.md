@@ -151,7 +151,7 @@ Cloudflare Pages preview 검증:
 
 - Preview URL: `https://migrate-vite-react-ssg.soma-projects.pages.dev`
 - 홈 title/description/canonical/h1 확인
-- `/projects/16-aisc/` title/description/canonical/본문 확인
+- `/projects/16-gyohwan-com/` title/description/canonical/본문 확인
 - `sitemap.xml` URL 334개 확인
 - `robots.txt`에 `Allow: /`와 sitemap만 있는 것 확인
 - 존재하지 않는 URL이 Cloudflare에서 HTTP 404로 응답하는 것 확인

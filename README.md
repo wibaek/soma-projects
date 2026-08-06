@@ -29,8 +29,8 @@ app repo에는 갱신된 submodule commit 포인터만 반영합니다.
 
 ```json
 {
-  "id": "16-aisc",
-  "title": "AISC - AI 활용능력평가",
+  "id": "16-gyohwan-com",
+  "title": "교환닷컴 - 교환학생 정보 공유·경쟁률 비교 서비스",
   "description": "프로젝트 설명",
   "generation": 16
 }

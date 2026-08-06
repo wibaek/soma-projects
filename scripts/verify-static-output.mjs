@@ -10,7 +10,7 @@ const projects = JSON.parse(
 );
 
 const sampleProject =
-  projects.find((project) => project.id === "16-aisc") ?? projects[0];
+  projects.find((project) => project.id === "16-gyohwan-com") ?? projects[0];
 
 assert(sampleProject, "No projects found in data/projects.json.");
 

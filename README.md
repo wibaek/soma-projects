@@ -63,14 +63,9 @@ pnpm dev
 `POST /api/v1/project-submissions`가 서버에서 입력과 Turnstile 토큰을 검증한 뒤,
 D1의 `project_submission` 테이블에 `pending` 상태로 저장합니다.
 
-Cloudflare에서 최초 한 번 다음 구성이 필요합니다.
-
-1. `wrangler.remote.jsonc`에 연결된 `soma-projects` D1 데이터베이스를 사용합니다.
-2. Pages 프로젝트의 Production과 Preview 환경에 D1 binding `SUBMISSION_DB`를 연결합니다.
-3. Pages 프로젝트에 secret `TURNSTILE_SECRET_KEY`를 등록합니다.
-4. Production 런타임 변수 `TURNSTILE_EXPECTED_HOSTNAME=swmaestroproject.org`를 등록합니다.
-5. GitHub Actions repository variable `VITE_TURNSTILE_SITE_KEY`에 Turnstile site key를 등록합니다.
-6. D1 migration을 적용한 뒤 Pages 프로젝트를 다시 배포합니다.
+Cloudflare Pages, D1, Turnstile과 GitHub `Production` environment의 설정 위치,
+입력할 값, 공개 여부, 키 교체 절차는
+[프로젝트 등록 운영 설정](docs/project-submission-operations.md)에 정리되어 있습니다.
 
 ```bash
 pnpm d1:migrate:remote
@@ -112,14 +107,8 @@ pnpm build
 Vite 클라이언트 번들과 React 서버 렌더링 기반 SSG 스크립트로 빌드 결과는 `out/`에 생성됩니다.
 빌드 시작 시 `data/projects.json` 존재 여부와 기본 스키마를 검증합니다.
 
-Cloudflare Pages 설정:
-
-- Build command: `pnpm build`
-- Build output directory: `out`
-- D1 binding: `SUBMISSION_DB`
-- Runtime secret: `TURNSTILE_SECRET_KEY`
-- Production runtime variable: `TURNSTILE_EXPECTED_HOSTNAME=swmaestroproject.org`
-- GitHub Actions repository variable: `VITE_TURNSTILE_SITE_KEY`
+Cloudflare Pages는 GitHub Actions에서 `pnpm build`로 생성한 `out/`을 Wrangler Direct Upload로
+배포합니다. 전체 배포 설정은 [프로젝트 등록 운영 설정](docs/project-submission-operations.md)을 참고합니다.
 
 ## 검증
 

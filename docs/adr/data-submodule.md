@@ -54,19 +54,14 @@ git commit -m "chore: 데이터 submodule 포인터 갱신"
 ## Cloudflare 배포
 
 현재 Cloudflare Pages 프로젝트는 Git 연동이 아니라 Wrangler direct upload 방식으로 배포한다.
-로컬 또는 CI에서 submodule을 checkout한 뒤 `pnpm build`와 `wrangler pages deploy out`을 실행하면 된다.
-
-GitHub Actions로 옮길 경우 checkout 단계는 submodule 권한을 가진 token을 사용해야 한다.
-
-```yaml
-- uses: actions/checkout@v4
-  with:
-    submodules: recursive
-    token: ${{ secrets.DATA_REPO_TOKEN }}
-```
+GitHub Actions가 read-only SSH deploy key로 submodule을 checkout한 뒤 `pnpm build`와
+`wrangler pages deploy out`을 실행한다.
 
 Cloudflare Pages Git integration을 직접 쓰는 방식은 private submodule 인증을 별도로 맞춰야 하므로,
 이 프로젝트에는 direct upload 또는 GitHub Actions 기반 배포가 더 단순하다.
+
+배포 key와 GitHub·Cloudflare 환경 설정은
+[프로젝트 등록 운영 설정](../project-submission-operations.md)을 기준으로 관리한다.
 
 ## 실패 모드
 

@@ -28,7 +28,7 @@ jobs:
 
     environment:
       name: Production
-      url: https://swmaestroproject.org
+      url: https://soma.wibaek.com
 
     steps:
       - name: 코드 체크아웃

@@ -15,7 +15,7 @@ Cloudflare와 GitHub 설정을 정리한다. 실제 secret 값은 저장소나 �
 | 등록 위치 | 종류 | 이름 | 입력할 값 | 공개 여부 |
 | --- | --- | --- | --- | --- |
 | Cloudflare Pages Production | D1 binding | `SUBMISSION_DB` | D1 데이터베이스 `soma-projects` | 비밀 아님 |
-| Cloudflare Pages Production | Variable | `TURNSTILE_EXPECTED_HOSTNAME` | `swmaestroproject.org` | 비밀 아님 |
+| Cloudflare Pages Production | Variable | `TURNSTILE_EXPECTED_HOSTNAME` | `soma.wibaek.com` | 비밀 아님 |
 | Cloudflare Pages Production | Secret | `TURNSTILE_SECRET_KEY` | Turnstile 위젯의 secret key | 비밀 |
 | GitHub `Production` environment | Variable | `VITE_TURNSTILE_SITE_KEY` | 같은 Turnstile 위젯의 sitekey | 공개 가능 |
 | GitHub `Production` environment | Variable | `CLOUDFLARE_ACCOUNT_ID` | Pages 프로젝트가 속한 Cloudflare account ID | 비밀 아님 |
@@ -30,7 +30,7 @@ Cloudflare와 GitHub 설정을 정리한다. 실제 secret 값은 저장소나 �
 Cloudflare Dashboard에서 **Turnstile > Add widget**으로 이동해 다음과 같이 생성한다.
 
 - Widget name: 식별하기 쉬운 이름. 예: `soma-projects-production`
-- Hostname: `swmaestroproject.org`
+- Hostname: `soma.wibaek.com`
 - Widget mode: `Managed`
 
 Hostname에는 `https://`, port, path를 붙이지 않는다. 생성 후 표시되는 두 값은 다음 위치에 나눠 등록한다.
@@ -65,7 +65,7 @@ Production 환경의 **Variables and Secrets**에 다음 두 항목을 등록한
 
 1. `TURNSTILE_EXPECTED_HOSTNAME`
    - Type: Variable
-   - Value: `swmaestroproject.org`
+   - Value: `soma.wibaek.com`
 2. `TURNSTILE_SECRET_KEY`
    - Type: Secret 또는 Encrypt
    - Value: Turnstile 위젯에서 발급된 secret key
@@ -162,7 +162,7 @@ Schema가 바뀌는 배포는 **migration 적용 후 코드 배포** 순서를 �
 2. 필요한 D1 migration을 원격에 적용한다.
 3. 변경을 `main`에 반영하거나 GitHub Actions의 **Cloudflare Pages Deploy** workflow를 실행한다.
 4. GitHub Actions에서 submodule checkout, build, Pages deploy가 모두 성공했는지 확인한다.
-5. `https://swmaestroproject.org/submit/`에서 Turnstile과 제출 동작을 확인한다.
+5. `https://soma.wibaek.com/submit/`에서 Turnstile과 제출 동작을 확인한다.
 6. 테스트 제출이 D1에 들어왔는지 확인한다.
 
 ```bash

@@ -56,7 +56,7 @@ type TurnstileResult =
   | { ok: false; unavailable: boolean };
 
 const MAX_REQUEST_BYTES = 32 * 1024;
-const PROBLEM_BASE_URL = "https://swmaestroproject.org/problems";
+const PROBLEM_BASE_URL = "https://soma.wibaek.com/problems";
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 

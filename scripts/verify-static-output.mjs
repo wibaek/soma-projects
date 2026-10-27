@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(rootDir, "out");
-const siteUrl = "https://swmaestroproject.org";
+const siteUrl = "https://soma.wibaek.com";
 const projects = JSON.parse(
   await readFile(path.join(rootDir, "data", "projects.json"), "utf8")
 );

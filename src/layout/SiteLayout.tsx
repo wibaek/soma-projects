@@ -6,10 +6,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
     <>
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-8">
-          <a
-            href="/"
-            className="text-[15px] font-semibold tracking-tight text-ink-deep"
-          >
+          <a href="/" className="text-[15px] font-semibold tracking-tight text-ink-deep">
             SOMA Projects
           </a>
 
@@ -40,6 +37,14 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
+      <aside className="border-b border-border bg-brand-soft/55 px-5 py-2 text-center text-[13px] text-foreground">
+        사이트 주소가{" "}
+        <a href="https://soma.wibaek.com" className="font-medium underline underline-offset-2">
+          soma.wibaek.com
+        </a>
+        으로 변경되었습니다.
+      </aside>
+
       {children}
 
       <footer className="mt-24 border-t border-border">
@@ -50,8 +55,8 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
                 SOMA Projects
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
-                소프트웨어 마에스트로 프로그램의 프로젝트들을 한 곳에서 탐색하는
-                비공식 아카이브입니다.
+                소프트웨어 마에스트로 프로그램의 프로젝트들을 한 곳에서 탐색하는 비공식
+                아카이브입니다.
               </p>
             </div>
 
@@ -67,10 +72,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
                 </a>
               </li>
               <li>
-                <a
-                  href="/submit/"
-                  className="transition-colors hover:text-foreground"
-                >
+                <a href="/submit/" className="transition-colors hover:text-foreground">
                   프로젝트 등록
                 </a>
               </li>
@@ -98,8 +100,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
           </div>
 
           <p className="mt-8 border-t border-border pt-6 text-[12px] text-muted-foreground">
-            © {new Date().getFullYear()} SOMA Projects. 비공식 커뮤니티
-            아카이브.
+            © {new Date().getFullYear()} SOMA Projects. 비공식 커뮤니티 아카이브.
           </p>
         </div>
       </footer>

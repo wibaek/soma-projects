@@ -8,7 +8,7 @@ import {
   getProjectTypes,
 } from "@/lib/data";
 
-export const SITE_URL = "https://swmaestroproject.org";
+export const SITE_URL = "https://soma.wibaek.com";
 export const SITE_NAME = "SOMA Projects";
 export const HOME_TITLE =
   "SOMA Projects - 소프트웨어 마에스트로 프로젝트 아카이브";
